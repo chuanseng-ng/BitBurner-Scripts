@@ -52,11 +52,11 @@ export async function main(ns) {
 
     // Define scripts to use to target best possible company server
     if (ns.fileExists("HTTPWorm.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("alpha-ent")) {
-        // Hacking skill = 406
+        // Hacking skill = 551
         var latest_script = "/generic_hack/aevum-police.js"
         var home_latest_script = "/generic_hack/alpha-ent.js"
     } else if (ns.fileExists("relaySMTP.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("catalyst")) {
-        // Hacking skill = 392
+        // Hacking skill = 410
         var latest_script = "/generic_hack/computek.js"
         var home_latest_script = "/generic_hack/catalyst.js"
     } else if (ns.fileExists("FTPCrack.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("omega-net")) {
@@ -64,7 +64,7 @@ export async function main(ns) {
         var latest_script = "/generic_hack/omega-net.js"
         var home_latest_script = "/generic_hack/silver-helix.js"
     } else if (ns.fileExists("BruteSSH.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("iron-gym")) {
-        // Hacking skill = 10
+        // Hacking skill = 100
         var latest_script = "/generic_hack/joesguns.js"
         var home_latest_script = "/generic_hack/iron-gym.js"
     } else {
