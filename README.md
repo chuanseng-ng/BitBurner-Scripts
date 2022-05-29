@@ -17,3 +17,4 @@
 | 3. | generic_hack | Hacking scripts that startup.js or server/*.js reads |
 | 4. | server | Contains all server related scripts |
 | 5. | template | Contains testing scripts |
+| 6. | legacy | Contains previously used legacy scripts |
