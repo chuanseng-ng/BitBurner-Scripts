@@ -84,24 +84,6 @@ export async function main(ns) {
     }
     
     ns.run(home_latest_script, Math.floor(homeram/2.6) - 5);
-    
-    //if (homeram == 4096) {
-    //    ns.run(latest_script, 1570);
-    //} else if (homeram == 2048) {
-    //    ns.run(latest_script, 782);
-    //} else if (homeram == 1024) {
-    //    ns.run(latest_script, 389);
-    //} else if (homeram == 512) {
-    //    ns.run(latest_script, 192);
-    //} else if (homeram == 256) {
-    //    ns.run(latest_script, 94);
-    //} else if (homeram == 128) {
-    //    ns.run(latest_script, 45);
-    //} else if (homeram == 64) {
-    //    ns.run(latest_script, 20);
-    //} else { // Default set to 32GB
-    //    ns.run(latest_script, 8);
-    //}
 
     if (ns.serverExists("pserv-0")) {
         for (var i = 0; i < selfserversPort.length; ++i) {
@@ -111,25 +93,6 @@ export async function main(ns) {
             await ns.scp(latest_script, serv);
             ns.nuke(serv);
             ns.exec(latest_script, serv, Math.floor(servRam/2.6));
-            //if (selfserverram == 8) {
-            //    ns.exec(latest_script, serv, 3);
-            //} else if (selfserverram == 16) {
-            //    ns.exec(latest_script, serv, 6);
-            //} else if (selfserverram == 32) {
-            //    ns.exec(latest_script, serv, 12);
-            //} else if (selfserverram == 64) {
-            //    ns.exec(latest_script, serv, 24);
-            //} else if (selfserverram == 128) {
-            //    ns.exec(latest_script, serv, 49);
-            //} else if (selfserverram == 256) {
-            //    ns.exec(latest_script, serv, 98);
-            //} else if (selfserverram == 512) {
-            //    ns.exec(latest_script, serv, 196);
-            //} else if (selfserverram == 1024) {
-            //    ns.exec(latest_script, serv, 393);
-            //} else if (selfserverram == 2048) {
-            //    ns.exec(latest_script, serv, 787);
-            //}
         }
     }
 
@@ -160,15 +123,6 @@ export async function main(ns) {
                 ns.ftpcrack(serv);
                 ns.nuke(serv);
                 ns.exec(latest_script, serv, Math.floor(servRam/2.6));
-                //if (ns.getServerMaxRam(serv) == 16) {
-                //    ns.exec(latest_script, serv, 6);
-                //} else if (ns.getServerMaxRam(serv) == 32) {
-                //    ns.exec(latest_script, serv, 12);
-                //} else if (ns.getServerMaxRam(serv) == 64) {
-                //    ns.exec(latest_script, serv, 24);
-                //} else if (ns.getServerMaxRam(serv) == 128) {
-                //    ns.exec(latest_script, serv, 49);
-                //}
             }
 
             if (ns.fileExists("relaySMTP.exe")) {
@@ -182,17 +136,6 @@ export async function main(ns) {
                     ns.relaysmtp(serv);
                     ns.nuke(serv);
                     ns.exec(latest_script, serv, Math.floor(servRam/2.6));
-                    //if (ns.getServerMaxRam(serv) == 16) {
-                    //    ns.exec(latest_script, serv, 6);
-                    //} else if (ns.getServerMaxRam(serv) == 32) {
-                    //    ns.exec(latest_script, serv, 12);
-                    //} else if (ns.getServerMaxRam(serv) == 64) {
-                    //    ns.exec(latest_script, serv, 24);
-                    //} else if (ns.getServerMaxRam(serv) == 128) {
-                    //    ns.exec(latest_script, serv, 49);
-                    //} else if (ns.getServerMaxRam(serv) == 256) {
-                    //    ns.exec(latest_script, serv, 98);
-                    //}
                 }
                 if (ns.fileExists("HTTPWorm.exe")) {
                     for (var i = 0; i < servers4Port.length; ++i) {
@@ -206,17 +149,6 @@ export async function main(ns) {
                         ns.httpworm(serv);
                         ns.nuke(serv);
                         ns.exec(latest_script, serv, Math.floor(servRam/2.6));
-                        //if (ns.getServerMaxRam(serv) == 16) {
-                        //    ns.exec(latest_script, serv, 6);
-                        //} else if (ns.getServerMaxRam(serv) == 32) {
-                        //    ns.exec(latest_script, serv, 12);
-                        //} else if (ns.getServerMaxRam(serv) == 64) {
-                        //    ns.exec(latest_script, serv, 24);
-                        //} else if (ns.getServerMaxRam(serv) == 128) {
-                        //    ns.exec(latest_script, serv, 49);
-                        //} else if (ns.getServerMaxRam(serv) == 256) {
-                        //    ns.exec(latest_script, serv, 98);
-                        //}
                     }
                     if (ns.fileExists("SQLInject.exe")) {
                         for (var i = 0; i < servers5Port.length; ++i) {
@@ -231,17 +163,6 @@ export async function main(ns) {
                             ns.sqlinject(serv);
                             ns.nuke(serv);
                             ns.exec(latest_script, serv, Math.floor(servRam/2.6));
-                            //if (ns.getServerMaxRam(serv) == 16) {
-                            //    ns.exec(latest_script, serv, 6);
-                            //} else if (ns.getServerMaxRam(serv) == 32) {
-                            //    ns.exec(latest_script, serv, 12);
-                            //} else if (ns.getServerMaxRam(serv) == 64) {
-                            //    ns.exec(latest_script, serv, 24);
-                            //} else if (ns.getServerMaxRam(serv) == 128) {
-                            //    ns.exec(latest_script, serv, 49);
-                            //} else if (ns.getServerMaxRam(serv) == 256) {
-                            //    ns.exec(latest_script, serv, 98);
-                            //}
                         }
                     }
                 }

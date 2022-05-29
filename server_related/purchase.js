@@ -51,7 +51,4 @@ export async function main(ns) {
             ++i;
         }
     }
-	//var delete_server = ns.args[0];
-
-	//ns.deleteServer(delete_server)
 }

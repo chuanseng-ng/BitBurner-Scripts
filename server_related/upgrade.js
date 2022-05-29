@@ -52,24 +52,5 @@ export async function main(ns) {
         await ns.scp(target_script, existingServers[i]);
 
         ns.exec(target_script, existingServers[i], Math.floor(ram/2,6));
-        //if (ram == 8) {
-        //    ns.exec(target_script, existingServers[i], 3);
-        //} else if (ram == 16) {
-        //    ns.exec(target_script, existingServers[i], 6);
-        //} else if (ram == 32) {
-        //    ns.exec(target_script, existingServers[i], 12);
-        //} else if (ram == 64) {
-        //    ns.exec(target_script, existingServers[i], 24);
-        //} else if (ram == 128) {
-        //    ns.exec(target_script, existingServers[i], 49);
-        //} else if (ram == 256) {
-        //    ns.exec(target_script, existingServers[i], 98);
-        //} else if (ram == 512) {
-        //    ns.exec(target_script, existingServers[i], 196);
-        //} else if (ram == 1024) {
-        //    ns.exec(target_script, existingServers[i], 392);
-        //} else if (ram == 2048) {
-        //    ns.exec(target_script, existingServers[i], 787);
-        //}
     }
 }
