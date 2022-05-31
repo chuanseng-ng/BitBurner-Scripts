@@ -18,3 +18,10 @@
 | 4. | server | Contains all server related scripts |
 | 5. | template | Contains testing scripts |
 | 6. | legacy | Contains previously used legacy scripts |
+
+<br />
+<br />
+
+## To-Do:
+1. Break scripts into more modular ones for reusability between different scripts
+2. Improve automation -> Run 1 do all script while true
