@@ -34,12 +34,14 @@ export async function main(ns) {
     var servers4Port = ["lexo-corp",
         "aevum-police", "unitalife",
         "alpha-ent", "univ-energy",
-        "global-pharm"]
+        "global-pharm", "run4theh111z",
+        "."]
 
     // Array of all servers that need 5 ports opened
     // to gain root access. These have * GB of RAM
     var servers5Port = ["zb-institute",
-        "omnia", "solaris"]
+        "omnia", "solaris",
+        "fulcrumtech", "microdyne"]
 
     // Array of servers purchased from store
     if (ns.serverExists("pserv-0")) {
