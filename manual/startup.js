@@ -55,23 +55,23 @@ export async function main(ns) {
     // Define scripts to use to target best possible company server
     if (ns.fileExists("HTTPWorm.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("alpha-ent")) {
         // Hacking skill = 551
-        var latest_script = "/generic_hack/aevum-police.js"
-        var home_latest_script = "/generic_hack/alpha-ent.js"
+        var latest_script = "/manual/generic_hack/aevum-police.js"
+        var home_latest_script = "/manual/generic_hack/alpha-ent.js"
     } else if (ns.fileExists("relaySMTP.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("catalyst")) {
         // Hacking skill = 410
-        var latest_script = "/generic_hack/computek.js"
-        var home_latest_script = "/generic_hack/catalyst.js"
+        var latest_script = "/manual/generic_hack/computek.js"
+        var home_latest_script = "/manual/generic_hack/catalyst.js"
     } else if (ns.fileExists("FTPCrack.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("omega-net")) {
         // Hacking skill = 180
-        var latest_script = "/generic_hack/omega-net.js"
-        var home_latest_script = "/generic_hack/silver-helix.js"
+        var latest_script = "/manual/generic_hack/omega-net.js"
+        var home_latest_script = "/manual/generic_hack/silver-helix.js"
     } else if (ns.fileExists("BruteSSH.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("iron-gym")) {
         // Hacking skill = 100
-        var latest_script = "/generic_hack/joesguns.js"
-        var home_latest_script = "/generic_hack/iron-gym.js"
+        var latest_script = "/manual/generic_hack/joesguns.js"
+        var home_latest_script = "/manual/generic_hack/iron-gym.js"
     } else {
-        var latest_script = "/generic_hack/n00dles.js"
-        var home_latest_script = "/generic_hack/foodnstuff.js"
+        var latest_script = "/manual/generic_hack/n00dles.js"
+        var home_latest_script = "/manual/generic_hack/foodnstuff.js"
     }
 
     // Copy our scripts onto each server that requires 0 ports

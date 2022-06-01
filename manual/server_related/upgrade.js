@@ -16,18 +16,18 @@ export async function main(ns) {
     // Define scripts to use to target best possible company server
     if (ns.fileExists("HTTPWorm.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("aevum-police")) {
         // Hacking skill = 406
-        var target_script = "/generic_hack/aevum-police"
+        var target_script = "/manual/generic_hack/aevum-police"
     } else if (ns.fileExists("relaySMTP.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("computek")) {
         // Hacking skill = 392
-        var target_script = "/generic_hack/computek"
+        var target_script = "/manual/generic_hack/computek"
     } else if (ns.fileExists("FTPCrack.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("omega-net")) {
         // Hacking skill = 180
-        var target_script = "/generic_hack/omega-net.js"
+        var target_script = "/manual/generic_hack/omega-net.js"
     } else if (ns.fileExists("BruteSSH.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("joesguns")) {
         // Hacking skill = 10
-        var target_script = "/generic_hack/joesguns.js"
+        var target_script = "/manual/generic_hack/joesguns.js"
     } else {
-        var target_script = "/generic_hack/n00dles.js"
+        var target_script = "/manual/generic_hack/n00dles.js"
     }
     let ram = 1;
 

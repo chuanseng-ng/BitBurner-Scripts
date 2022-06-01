@@ -20,18 +20,18 @@ export async function main(ns) {
     // Define scripts to use to target best possible company server
     if (ns.fileExists("HTTPWorm.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("aevum-police")) {
         // Hacking skill = 406
-        var latest_script = "/generic_hack/aevum-police.js"
+        var latest_script = "/manual/generic_hack/aevum-police.js"
     } else if (ns.fileExists("relaySMTP.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("computek")) {
         // Hacking skill = 392
-        var latest_script = "/generic_hack/computek.js"
+        var latest_script = "/manual/generic_hack/computek.js"
     } else if (ns.fileExists("FTPCrack.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("omega-net")) {
         // Hacking skill = 180
-        var latest_script = "/generic_hack/omega-net.js"
+        var latest_script = "/manual/generic_hack/omega-net.js"
     } else if (ns.fileExists("BruteSSH.exe") && ns.getPlayer().hacking > ns.getServerRequiredHackingLevel("joesguns")) {
         // Hacking skill = 10
-        var latest_script = "/generic_hack/joesguns.js"
+        var latest_script = "/manual/generic_hack/joesguns.js"
     } else {
-        var latest_script = "/generic_hack/n00dles.js"
+        var latest_script = "/manual/generic_hack/n00dles.js"
     }
 
     // Continuously try to purchase servers until we've reached the maximum
