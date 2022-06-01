@@ -44,7 +44,7 @@ export async function main(ns) {
         "fulcrumtech", "microdyne",
         "blade", "powerhouse-fitness",
         "omnitek", "helios",
-        "vtialife", "titan-labs"]
+        "vitalife", "titan-labs"]
 
     // Array of servers purchased from store
     if (ns.serverExists("pserv-0")) {
