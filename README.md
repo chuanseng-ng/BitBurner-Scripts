@@ -1,5 +1,11 @@
 # BitBurner-Scripts
-## Overview of available scripts:
+
+## Typescript scripts -
+
+### Overview of available scripts: 
+
+## Manual scripts -
+### Overview of available scripts:
 1. startup.js
 2. nuke_all.js
 3. generic_hack/*.js
@@ -9,7 +15,7 @@
 <br />
 <br />
 
-## Breakdown of script/folder:
+### Breakdown of script/folder:
 | No. | Script/Folder Name | Description |
 |:---:|:------------------:|:-----------:|
 | 1. | startup.js | Initiatizes hack script based on current config/scripts available |
@@ -22,6 +28,6 @@
 <br />
 <br />
 
-## To-Do:
+### To-Do:
 1. Break scripts into more modular ones for reusability between different scripts
 2. Improve automation -> Run 1 do all script while true
