@@ -41,7 +41,10 @@ export async function main(ns) {
     // to gain root access. These have * GB of RAM
     var servers5Port = ["zb-institute",
         "omnia", "solaris",
-        "fulcrumtech", "microdyne"]
+        "fulcrumtech", "microdyne",
+        "blade", "powerhouse-fitness",
+        "omnitek", "helios",
+        "vtialife", "titan-labs"]
 
     // Array of servers purchased from store
     if (ns.serverExists("pserv-0")) {
