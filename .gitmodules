@@ -1,0 +1,3 @@
+[submodule "bitburner_scripts"]
+	path = bitburner_scripts
+	url = https://github.com/eddylim95/bitburner_scripts

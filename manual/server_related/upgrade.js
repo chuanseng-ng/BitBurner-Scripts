@@ -37,7 +37,7 @@ export async function main(ns) {
 
     if (ram < 2 || ram <= currentSize) {
         ns.tprint("Can't afford upgrade - current " + currentSize + "GB, can afford " + ram + "GB");
-        ns.tprint("Next server RAM upgrade is " + ram * 2 + "GB which costs " +
+        ns.tprint("Next server RAM upgrade is " + currentSize * 2 + "GB which costs " +
             ns.getPurchasedServerCost(ram * 2) / 1000 / 1000 + "bil")
         ns.exit();
     }
