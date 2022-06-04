@@ -22,13 +22,6 @@ export async function main(ns) {
     await serverCal(ns, scannedServersFiltered);
 
     while (portHackLvl !=5 && serverCount != 25) {
-        // Attempt to upgrade server to hack
-        if (portHackLvl != 5) {
-            await ns.sleep(300000);
-            await serverCal(ns, scannedServersFiltered);        
-            portHackLvl = portHackLvlCal(ns);
-        }
-
         // Attempt to buy maximum number of pservers
         // Then attempt to upgrade pservers to max RAM
         if (serverCount != 25){
@@ -36,6 +29,13 @@ export async function main(ns) {
         } else {
             await ns.run("/build/pserver/upgrade.js", 1)
             await serverCal(ns, scannedServersFiltered)
+        }
+
+        // Attempt to upgrade server to hack
+        if (portHackLvl != 5) {
+            await ns.sleep(300000);
+            await serverCal(ns, scannedServersFiltered);        
+            portHackLvl = portHackLvlCal(ns);
         }
     }
 }
