@@ -12,5 +12,5 @@
         "strictNullChecks": true,
         "strictPropertyInitialization": true
     },
-    "exclude": ["bitburner_scripts/**/*", "ts/main.ts"]
+    "exclude": ["bitburner_scripts/**/*"]
 }

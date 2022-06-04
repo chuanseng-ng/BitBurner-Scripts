@@ -4,7 +4,9 @@
         "buildTs": "tsc -p tsconfig.json",
         "buildNS": "bin\\buildNS.bash",
         "buildManifest": "bin\\generateManifest.bash",
-        "clean": "rm -rf build\\*",
+        "clean-all": "clean-js clean-resources",
+        "clean-js": "rmdir -rf js\\*",
+        "clean-resources": "rmdir -rf ts\\resources",
         "copyResources": "mkdir ts\\resources && Xcopy /E ts\\resources js",
         "re": "npm-run-all clean buildTs copyResources buildNS buildManifest",
         "webserver": "node bin\\webserver.js -p 9182 -d build --enable_cors"
