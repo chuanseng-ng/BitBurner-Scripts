@@ -26,3 +26,6 @@ replay_pid*
 # For bitburner
 .vscode
 ts/*.js
+node_modules
+bitburner_scripts
+package-lock.json
