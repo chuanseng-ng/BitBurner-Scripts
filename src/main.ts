@@ -1,10 +1,12 @@
 import { serverCal } from "./util/serverCal";
 import { scanServer } from "./util/scan"
 import { portHackLvlCal } from "./util/portHackLvl";
+import { purchaseServer } from "./pserver/purchase";
 
 /** @param {NS ns} **/
 export async function main(ns) {
     let portHackLvl = 0;
+    let serverCount = 0;
 
     // Call scan function to dump all available servers in game
     var[scannedServers, scannedServersFiltered] = scanServer(ns);
@@ -19,9 +21,21 @@ export async function main(ns) {
     // Cannot use ns.run here as it can only take in string, integer or boolean as arguments
     await serverCal(ns, scannedServersFiltered);
 
-    while (portHackLvl != 5) {
-        await ns.sleep(300000);
-        await serverCal(ns, scannedServersFiltered);        
-        portHackLvl = portHackLvlCal(ns);
+    while (portHackLvl !=5 && serverCount != 25) {
+        // Attempt to upgrade server to hack
+        if (portHackLvl != 5) {
+            await ns.sleep(300000);
+            await serverCal(ns, scannedServersFiltered);        
+            portHackLvl = portHackLvlCal(ns);
+        }
+
+        // Attempt to buy maximum number of pservers
+        // Then attempt to upgrade pservers to max RAM
+        if (serverCount != 25){
+            [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered)
+        } else {
+            await ns.run("/build/pserver/upgrade.js", 1)
+            await serverCal(ns, scannedServersFiltered)
+        }
     }
 }
