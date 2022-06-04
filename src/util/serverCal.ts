@@ -11,14 +11,14 @@ export function serverCal(ns, scannedServersFiltered) {
     portHackLvl = portHackLvlCal(ns);
 
     for (let i = 0; i < scannedServersFiltered.length; i++) {
-        if (scannedServersFiltered[i].hacklevel == portHackLvl) {
+        if (scannedServersFiltered[i].minsecurity == portHackLvl) {
             highestLvlServer.push(scannedServersFiltered[i]);
             highestLvlServerCount += 1;
         }
     }
 
     for (let i = 0; i < highestLvlServerCount; i++) {
-        if (highestLvlServer[i].maxmoney > optimalServerMoney) {
+        if (highestLvlServer[i].maxmoney > optimalServerMoney && highestLvlServer[i].hacklevel <= ns.getPlayer().hacking) {
             optimalServerIndex = i;
         }
     }
