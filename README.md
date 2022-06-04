@@ -1,8 +1,23 @@
 # BitBurner-Scripts
 
+## Overview -
+1. Check README_ref.md for list of github repos used as reference
+2. Typescript scripts section will detail the general concept of the main.js script <br />
+    For more info refer to README_ts.md in the src folder
+3. Manual scripts section will list the scripts initially used in the game <br />
+    Not in used at the moment, so will not be maintained
+<br />
+<br />
+
 ## Typescript scripts -
 
-### Overview of available scripts: 
+### Overview of top script: 
+- main.ts - <br /> 
+Top script to execute in order to trigger all the underlying functions shown in README_ts.md <br />
+Currently script is imcomplete, check flowchart in README_ts.md for more info
+
+<br />
+<br />
 
 ## Manual scripts -
 ### Overview of available scripts:
@@ -27,7 +42,3 @@
 
 <br />
 <br />
-
-### To-Do:
-1. Break scripts into more modular ones for reusability between different scripts
-2. Improve automation -> Run 1 do all script while true
