@@ -16,6 +16,7 @@ export async function main(ns) {
 
     // Calculates optimal server to hack based on max money
     // Will automatically hacks determined server after calculation
+    // Cannot use ns.run here as it can only take in string, integer or boolean as arguments
     await serverCal(ns, scannedServersFiltered);
 
     while (portHackLvl != 5) {
