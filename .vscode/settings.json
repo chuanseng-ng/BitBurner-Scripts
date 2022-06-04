@@ -2,6 +2,8 @@
     "javascript.preferences.importModuleSpecifier": "non-relative",
     "files.exclude": {
         "jsconfig.json": true,
-        "NetscriptDefinitions.d.ts": true,
+        "index.d.ts": true,
     },
+
+    "typescript.npm": "C:\\Program Files\\nodejs\\npm.cmd"
 }
