@@ -29,6 +29,13 @@ export async function serverCal(ns, scannedServersFiltered) {
 async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex) {
     let homeram = ns.getServerMaxRam("home");
 
+    // Kills all running scripts in all available servers
+    for (let i = 0; i < scannedServersFiltered.length; i++) {
+        ns.killall(scannedServersFiltered[i].hostname);
+    }
+
+    ns.killall("home")
+
     for (let i = 0; i < scannedServersFiltered.length; i++) {
         await ns.scp("/build/exec/hack.js", scannedServersFiltered[i].hostname);
         ns.exec("/build/exec/hack.js", scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname)
