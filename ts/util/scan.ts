@@ -5,7 +5,8 @@ export function scan(ns) {
     let hostName = ns.getHostname();
     //ns.tprint(hostName)
     let scanArray = [hostName];
-    const scannedServers: any[] = [];
+    var scannedServers: any[] = [];
+    var scannedServersFiltered: any[] = [];
     let currentScanLength = 0;
 
     while (currentScanLength < scanArray.length) {
@@ -18,6 +19,9 @@ export function scan(ns) {
             let server = {hostname: currentHost, hacklevel: ns.getServerRequiredHackingLevel(currentHost), maxmoney: ns.getServerMaxMoney(currentHost), 
                             growth: ns.getServerGrowth(currentHost), minsecurity: minSecurity, ramsize: ns.getServerMaxRam(currentHost)};
             scannedServers.push(server);
+            if (server.ramsize >= 8) {
+                scannedServersFiltered.push(server)
+            }
             //ns.tprint(server.hostname);
 		    //ns.tprint('----------------');
 		    //ns.tprint('Difficulty: ' + server.hacklevel + ' | Potential: $' + server.maxmoney);
@@ -36,5 +40,5 @@ export function scan(ns) {
     }
     nukeChecker(ns, scannedServers)
 
-    return scannedServers
+    return [scannedServers, scannedServersFiltered];
 }
