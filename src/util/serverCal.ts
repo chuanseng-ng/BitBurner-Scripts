@@ -11,7 +11,7 @@ export async function serverCal(ns, scannedServersFiltered) {
     portHackLvl = portHackLvlCal(ns);
 
     for (let i = 0; i < scannedServersFiltered.length; i++) {
-        if (scannedServersFiltered[i].minsecurity == portHackLvl) {
+        if (scannedServersFiltered[i].numports == portHackLvl) {
             highestLvlServer.push(scannedServersFiltered[i]);
             highestLvlServerCount += 1;
         }
