@@ -1,7 +1,7 @@
 import { portHackLvlCal } from "./portHackLvl";
 
 /** @param {NS ns} **/
-export function serverCal(ns, scannedServersFiltered) {
+export async function serverCal(ns, scannedServersFiltered) {
     let portHackLvl = 0;
     let highestLvlServerCount = 0;
     let optimalServerIndex = 0;
@@ -23,7 +23,7 @@ export function serverCal(ns, scannedServersFiltered) {
         }
     }
 
-    serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex);
+    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex);
 }
 
 async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex) {
