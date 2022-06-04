@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES2021",
+        "module": "ES2020",
+        "rootDir": "src",
+        "baseUrl": "src",
+        "paths": {
+            "./util/*": [ "/build/util/*" ],
+            "./*": [ "/build/*", "/build/util/*" ],
+            "*": [ "/build/*", "/build/util/*" ]
+        },
+        "outDir": "build",
+        "moduleResolution": "node",
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true
+    },
+    "include": [ "src/**/*" ],
+    "exclude": [ "bitburner_scripts/**/*", "Bitburner.t.ts" ]
+}
