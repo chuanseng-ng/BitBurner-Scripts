@@ -1,19 +1,9 @@
+import { portHackLvlCal } from "./portHackLvl";
+
 /** @param {NS ns} **/
 export function nukeChecker(ns, scannedServers) {
-    let portHackLvl = 0
     let nukeSkipped = 0
-
-    if (ns.fileExists("BruteSSH.exe")) {
-        portHackLvl = 1;
-    } else if (ns.fileExists("FTPCrack.exe")) {
-        portHackLvl = 2;
-    } else if (ns.fileExists("relaySMTP.exe")) {
-        portHackLvl = 3;
-    } else if (ns.fileExists("HTTPWorm.exe")) {
-        portHackLvl = 4;
-    } else if (ns.fileExists("SQLInject.exe")) {
-        portHackLvl = 5;
-    }
+    let portHackLvl = portHackLvlCal(ns);
 
     for (let i = 0; i < scannedServers.length; i++) {
         let serverName = scannedServers[i].hostname;

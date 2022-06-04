@@ -1,7 +1,7 @@
 import { nukeChecker } from "./nuke";
 
 /** @param {NS ns} **/
-export function scan(ns) {
+export function scanServer(ns) {
     let hostName = ns.getHostname();
     //ns.tprint(hostName)
     let scanArray = [hostName];
@@ -17,8 +17,10 @@ export function scan(ns) {
             let currentHost = scanArray[i];
             let minSecurity = ns.getServerMinSecurityLevel(currentHost);
             let server = {hostname: currentHost, hacklevel: ns.getServerRequiredHackingLevel(currentHost), maxmoney: ns.getServerMaxMoney(currentHost), 
-                            growth: ns.getServerGrowth(currentHost), minsecurity: minSecurity, ramsize: ns.getServerMaxRam(currentHost)};
+                            growth: ns.getServerGrowth(currentHost), minsecurity: minSecurity, ramsize: ns.getServerMaxRam(currentHost),
+                            numports: ns.getServerNumPortsRequired(currentHost)};
             scannedServers.push(server);
+            ns.getser
             if (server.ramsize >= 8) {
                 scannedServersFiltered.push(server)
             }
