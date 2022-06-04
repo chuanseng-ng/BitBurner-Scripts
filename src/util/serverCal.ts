@@ -1,7 +1,7 @@
 import { portHackLvlCal } from "./portHackLvl";
 
 /** @param {NS ns} **/
-export function serverCal(ns, scannedServersFiltered) {
+export async function serverCal(ns, scannedServersFiltered) {
     let portHackLvl = 0;
     let highestLvlServerCount = 0;
     let optimalServerIndex = 0;
@@ -24,8 +24,7 @@ export function serverCal(ns, scannedServersFiltered) {
     }
 
     for (let i = 0; i < scannedServersFiltered.length; i++) {
-        ns.exec("/build/exec/hack.js", scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize), highestLvlServer[optimalServerIndex])
+        await ns.scp("/build/exec/hack.js", scannedServersFiltered[i].hostname);
+        ns.exec("/build/exec/hack.js", scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname)
     }
-
-    return portHackLvl;
 }
