@@ -1,8 +1,4 @@
 import { scan } from "./util/scan"
-<<<<<<< Updated upstream
-import { nukeChecker } from "./util/nuke";
-=======
->>>>>>> Stashed changes
 
 /** @param {NS ns} **/
 export function main(ns) {

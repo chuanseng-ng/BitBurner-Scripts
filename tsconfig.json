@@ -2,15 +2,6 @@
     "compilerOptions": {
         "target": "ES2021",
         "module": "ES2020",
-<<<<<<< Updated upstream
-        "rootDir": "src/",
-        "baseUrl": "src/",
-        "paths": {
-            "/lib/*": [ "lib/*" ],
-            "*": [ "*", "util/*" ]
-        },
-        "outDir": "build/",
-=======
         "rootDir": "src",
         "baseUrl": "src",
         "paths": {
@@ -19,15 +10,10 @@
             "*": [ "/build/*", "/build/util/*" ]
         },
         "outDir": "build",
->>>>>>> Stashed changes
         "moduleResolution": "node",
         "strictNullChecks": true,
         "strictPropertyInitialization": true
     },
-<<<<<<< Updated upstream
-    "exclude": ["bitburner_scripts/**/*", "Bitburner.t.ts"]
-=======
     "include": [ "src/**/*" ],
     "exclude": [ "bitburner_scripts/**/*", "Bitburner.t.ts" ]
->>>>>>> Stashed changes
 }
