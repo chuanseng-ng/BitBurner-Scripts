@@ -1,7 +1,7 @@
 import { nukeChecker } from "./nuke";
 
 /** @param {NS ns} **/
-export function scan(ns) {
+export function scanServer(ns) {
     let hostName = ns.getHostname();
     //ns.tprint(hostName)
     let scanArray = [hostName];
