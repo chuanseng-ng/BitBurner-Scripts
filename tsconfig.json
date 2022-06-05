@@ -15,5 +15,5 @@
         "strictPropertyInitialization": true
     },
     "include": [ "src/**/*" ],
-    "exclude": [ "bitburner_scripts/**/*", "Bitburner.t.ts" ]
+    "exclude": [ "bitburner_scripts/**/*", "src/Bitburner.t.ts" ]
 }
