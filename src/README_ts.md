@@ -10,7 +10,7 @@
 
 ## Flow chart:
 ### For first bitnode -
-::: mermaid
+``` mermaid
 graph TD;
     A[main.py] --> B[Scan out list of servers];
     B --> C[Remove servers that have 0GB RAM];
@@ -26,4 +26,4 @@ graph TD;
     I --> K[Upgrade existing nodes]
     J --> K
     K --> J
-:::
+```
