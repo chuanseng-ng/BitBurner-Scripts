@@ -36,10 +36,11 @@ export async function main(ns) {
 
         // Attempt to upgrade server to hack
         if (portHackLvl != 5) {
-            await ns.sleep(300000);
             //await serverCal(ns, scannedServersFiltered);        
             ns.run("build/util/serverCal.js", 1)
             portHackLvl = portHackLvlCal(ns);
         }
+
+        await ns.sleep(3000)
     }
 }
