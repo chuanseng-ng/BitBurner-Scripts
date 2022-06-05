@@ -6,7 +6,7 @@ import { purchaseServer } from "./pserver/purchase";
 /** @param {NS ns} **/
 export async function main(ns) {
     let portHackLvl = 0;
-    let serverCount = 0;
+    let serverCount = ns.getPurchasedServers().length;
 
     // Call scan function to dump all available servers in game
     var[scannedServers, scannedServersFiltered] = scanServer(ns);
@@ -18,7 +18,7 @@ export async function main(ns) {
 
     // Calculates optimal server to hack based on max money
     // Will automatically hacks determined server after calculation
-    // Cannot use ns.run here as it can only take in string, integer or boolean as arguments
+    // ns.run/exec can only take in string, integer or boolean as arguments
     //await serverCal(ns, scannedServersFiltered);
     ns.run("/build/util/serverCal.js", 1);
 
@@ -33,6 +33,8 @@ export async function main(ns) {
             //await serverCal(ns, scannedServersFiltered)
             ns.run("build/util/serverCal.js", 1)
         }
+
+        await ns.sleep(3000)
 
         // Attempt to upgrade server to hack
         if (portHackLvl != 5) {
