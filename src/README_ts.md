@@ -17,7 +17,7 @@ graph TD;
     B --> D[Nuke as many servers as possible];
     C --> E[Kill all running jobs from filtered server list];
     E --> |Get portHackLvl at current time| F[Get best possible server to hack based on server's maxMoney and player's hacking lvl];
-    F --> |Not-yet-implemented, first loop| G[Buy as many 8GB servers, max=25]
+    F --> |First loop| G[Buy as many 8GB servers, max=25]
     G --> |Add new servers to filtered server list| H[Upgrade all 25 servers to highest possible tier based on player's cash]
     H --> F
     F ==> |Subsequent loops for server upgrade| H
