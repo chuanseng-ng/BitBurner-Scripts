@@ -1,4 +1,4 @@
-import { serverCal } from "../util/serverCal";
+//import { serverCal } from "../util/serverCal";
 
 /** @param {NS ns} **/
 export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
@@ -13,7 +13,8 @@ export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
 
             scannedServersFiltered.push(hostNameServer) 
             serverCount += 1
-            await serverCal(ns, scannedServersFiltered)
+            //await serverCal(ns, scannedServersFiltered)
+            ns.run("/build/util/serverCal.js", 1)
         } else {
             await ns.sleep(30000)
         }

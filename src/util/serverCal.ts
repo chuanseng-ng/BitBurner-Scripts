@@ -1,14 +1,19 @@
 import { portHackLvlCal } from "./portHackLvl";
+import { scanServer } from "./scan";
 
 /** @param {NS ns} **/
-export async function serverCal(ns, scannedServersFiltered) {
+//export async function serverCal(ns, scannedServersFiltered) {
+export async function main(ns) {
     let portHackLvl = 0;
     let highestLvlServerCount = 0;
     let optimalServerIndex = 0;
     let optimalServerMoney = 0;
     var highestLvlServer: any [] = [];
+    var scannedServers: any [] = [];
+    var scannedServersFiltered: any [] = [];
 
     portHackLvl = portHackLvlCal(ns);
+    [scannedServers, scannedServersFiltered] = scanServer(ns);
 
     for (let i = 0; i < scannedServersFiltered.length; i++) {
         if (scannedServersFiltered[i].numports == portHackLvl) {
