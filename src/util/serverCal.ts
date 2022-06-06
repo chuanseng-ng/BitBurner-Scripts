@@ -11,11 +11,12 @@ export async function main(ns) {
     let pushDone = 0;
     let playerHackLvl = ns.getPlayer().hacking;
     var highestLvlServer: any [] = [];
-    var scannedServers: any [] = [];
+    //var scannedServers: any [] = [];
     var scannedServersFiltered: any [] = [];
 
     portHackLvl = portHackLvlCal(ns);
-    [scannedServers, scannedServersFiltered] = await scanServer(ns);
+    //[scannedServers, scannedServersFiltered] = await scanServer(ns);
+    scannedServersFiltered = await scanServer(ns);
 
     while (pushDone != 1) {
         for (let i = 0; i < scannedServersFiltered.length; i++) {
@@ -45,10 +46,12 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
 
     // Kills all running scripts in all available servers
     for (let i = 0; i < scannedServersFiltered.length; i++) {
-        ns.killall(scannedServersFiltered[i].hostname);
+        if (scannedServersFiltered[i].hostname != "home") {
+            ns.killall(scannedServersFiltered[i].hostname);
+        }
     }
 
-    ns.killall("home")
+    //ns.killall("home")
     await ns.sleep(3000)
 
     for (let i = 0; i < scannedServersFiltered.length; i++) {

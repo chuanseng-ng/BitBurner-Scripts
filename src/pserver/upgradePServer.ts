@@ -6,8 +6,8 @@ export async function main(ns) {
     let startRamSize = 8
     let pserverMaxRam = ns.getPurchasedServerMaxRam()
     let playerMoney = ns.getPlayer().money
-    let currentServerSize = ns.getServerMaxRam(existingServers[0])
     var existingServers = ns.getPurchasedServers()
+    let currentServerSize = ns.getServerMaxRam(existingServers[0])
 
     for (let i = 0; i < existingServers.length; i++) {
         var tempSize = ns.getServerMaxRam(existingServers[i])

@@ -9,7 +9,8 @@ export async function main(ns) {
     let serverCount = ns.getPurchasedServers().length;
 
     // Call scan function to dump all available servers in game
-    var[scannedServers, scannedServersFiltered] = await scanServer(ns);
+    //var[scannedServers, scannedServersFiltered] = await scanServer(ns);
+    var scannedServersFiltered = await scanServer(ns);
 
     // Kills all running scripts in all available servers
     for (let i = 0; i < scannedServersFiltered.length; i++) {
@@ -23,13 +24,13 @@ export async function main(ns) {
     ns.run("/build/util/serverCal.js", 1);
 
     // Loop will be killed after sleep - Check on reason
-    while (portHackLvl !=5 && serverCount != 25) {
+    while (portHackLvl !=5 || serverCount != 25) {
         // Attempt to buy maximum number of pservers
         // Then attempt to upgrade pservers to max RAM
         if (serverCount != 25){
             [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered)
         } else {
-            await ns.run("/build/pserver/upgrade.js", 1)
+            //await ns.run("/build/pserver/upgradePServer.js", 1)
             //await serverCal(ns, scannedServersFiltered)
             ns.run("build/util/serverCal.js", 1)
         }
