@@ -9,7 +9,7 @@ export async function main(ns) {
     let serverCount = ns.getPurchasedServers().length;
 
     // Call scan function to dump all available servers in game
-    var[scannedServers, scannedServersFiltered] = scanServer(ns);
+    var[scannedServers, scannedServersFiltered] = await scanServer(ns);
 
     // Kills all running scripts in all available servers
     for (let i = 0; i < scannedServersFiltered.length; i++) {

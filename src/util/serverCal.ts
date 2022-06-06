@@ -15,7 +15,7 @@ export async function main(ns) {
     var scannedServersFiltered: any [] = [];
 
     portHackLvl = portHackLvlCal(ns);
-    [scannedServers, scannedServersFiltered] = scanServer(ns);
+    [scannedServers, scannedServersFiltered] = await scanServer(ns);
 
     while (pushDone != 1) {
         for (let i = 0; i < scannedServersFiltered.length; i++) {

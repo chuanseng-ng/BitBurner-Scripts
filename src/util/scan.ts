@@ -1,13 +1,15 @@
 import { nukeChecker } from "./nuke";
 
 /** @param {NS ns} **/
-export function scanServer(ns) {
+export async function scanServer(ns) {
     let hostName = ns.getHostname();
     //ns.tprint(hostName)
     let scanArray = [hostName];
     var scannedServers: any[] = [];
     var scannedServersFiltered: any[] = [];
     let currentScanLength = 0;
+
+    ns.rm("server_list.txt");
 
     while (currentScanLength < scanArray.length) {
         let previousScanLength = currentScanLength;
@@ -21,14 +23,19 @@ export function scanServer(ns) {
                                 growth: ns.getServerGrowth(currentHost), minsecurity: ns.getServerMinSecurityLevel(currentHost), 
                                 ramsize: ns.getServerMaxRam(currentHost), numports: ns.getServerNumPortsRequired(currentHost)};
             } else {
-                server = {hostname: currentHost, numports: ns.getServerNumPortsRequired(currentHost)};
+                server = {hostname: currentHost, ramsize: ns.getServerMaxRam(currentHost)};
             }
 
             scannedServers.push(server);
             
             if (server.ramsize >= 8) {
                 scannedServersFiltered.push(server)
+                await ns.write("filter_list.txt", server.hostname, "a")
+                await ns.write("filter_list.txt", "\n", "a")
             }
+
+            await ns.write("server_list.txt", currentHost, "a")
+            await ns.write("server_list.txt", "\n", "a")
             //ns.tprint(server.hostname);
 		    //ns.tprint('----------------');
 		    //ns.tprint('Difficulty: ' + server.hacklevel + ' | Potential: $' + server.maxmoney);
@@ -45,7 +52,7 @@ export function scanServer(ns) {
             }
         }
     }
-    nukeChecker(ns, scannedServers)
+    await nukeChecker(ns, scannedServersFiltered)
 
     return [scannedServers, scannedServersFiltered];
 }
