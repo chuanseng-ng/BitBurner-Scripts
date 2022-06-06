@@ -15,11 +15,17 @@ export function scanServer(ns) {
         
         for (let i = previousScanLength; i < currentScanLength; i++) {
             let currentHost = scanArray[i];
-            let server = {hostname: currentHost, hacklevel: ns.getServerRequiredHackingLevel(currentHost), maxmoney: ns.getServerMaxMoney(currentHost), 
-                            growth: ns.getServerGrowth(currentHost), minsecurity: ns.getServerMinSecurityLevel(currentHost), 
-                            ramsize: ns.getServerMaxRam(currentHost), numports: ns.getServerNumPortsRequired(currentHost)};
+            let server: any,{} = {};
+            if (!currentHost.includes("pserv-")) {
+                server = {hostname: currentHost, hacklevel: ns.getServerRequiredHackingLevel(currentHost), maxmoney: ns.getServerMaxMoney(currentHost), 
+                                growth: ns.getServerGrowth(currentHost), minsecurity: ns.getServerMinSecurityLevel(currentHost), 
+                                ramsize: ns.getServerMaxRam(currentHost), numports: ns.getServerNumPortsRequired(currentHost)};
+            } else {
+                server = {hostname: currentHost, numports: ns.getServerNumPortsRequired(currentHost)};
+            }
+
             scannedServers.push(server);
-            ns.getser
+            
             if (server.ramsize >= 8) {
                 scannedServersFiltered.push(server)
             }

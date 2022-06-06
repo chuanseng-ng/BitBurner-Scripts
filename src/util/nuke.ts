@@ -9,10 +9,10 @@ export function nukeChecker(ns, scannedServers) {
         let serverName = scannedServers[i].hostname;
         let serverLvl  = scannedServers[i].hacklvl;
 
-        if (portHackLvl >= serverLvl) {
-            nuke(ns, serverName, portHackLvl)
-        } else {
+        if (portHackLvl <= serverLvl || (serverName.includes("pserv-"))) {
             nukeSkipped += 1
+        } else {
+            nuke(ns, serverName, portHackLvl)
         }
     }
 
@@ -25,7 +25,7 @@ function nuke(ns, serverName, portHackLvl) {
         ns.ftpcrack(serverName);
     } else if (portHackLvl >= 3) {
         ns.ftpcrack(serverName);
-        ns.relaysmtpy(serverName);
+        ns.relaysmtp(serverName);
     } else if (portHackLvl >= 4) {
         ns.ftpcrack(serverName);
         ns.relaysmtp(serverName);

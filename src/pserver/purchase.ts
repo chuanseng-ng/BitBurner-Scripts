@@ -8,9 +8,7 @@ export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
         if (ns.getServerMaxMoney("home") > ns.getPurchasedServerCost(defaultRamSize) || ns.getServerMaxMoney("home") == 0) {
             let hostName = "pserv-" + serverCount
             ns.purchaseServer(hostName, defaultRamSize);
-            let hostNameServer = {hostname: hostName, hacklevel: ns.getServerRequiredHackingLevel(hostName), maxmoney: ns.getServerMaxMoney(hostName),
-                                    growth: ns.getServerGrowth(hostName), minsecurity: ns.getServerMinSecurityLevel(hostName),
-                                    ramsize: ns.getServerMaxRam(hostName), numports: ns.getServerNumPortsRequired(hostName)}
+            let hostNameServer = {hostname: hostName, ramsize: ns.getServerMaxRam(hostName)}
 
             scannedServersFiltered.push(hostNameServer) 
             serverCount += 1
