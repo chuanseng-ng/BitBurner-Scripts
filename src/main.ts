@@ -1,7 +1,7 @@
 //import { serverCal } from "./util/serverCal";
 import { scanServer } from "./util/scan"
 import { portHackLvlCal } from "./util/portHackLvl";
-import { purchaseServer } from "./pserver/purchase";
+import { purchaseServer } from "./pserver/purchasePServer";
 
 /** @param {NS ns} **/
 export async function main(ns) {
