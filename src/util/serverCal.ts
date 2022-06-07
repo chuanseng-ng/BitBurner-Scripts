@@ -52,7 +52,6 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
     }
 
     ns.kill("/build/exec/hack.js", "home")
-    await ns.sleep(3000)
 
     for (let i = 0; i < scannedServersFiltered.length; i++) {
         await ns.scp("/build/exec/hack.js", scannedServersFiltered[i].hostname);

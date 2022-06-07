@@ -29,21 +29,23 @@ export async function main(ns) {
         // Attempt to buy maximum number of pservers
         // Then attempt to upgrade pservers to max RAM
         if (serverCount != 25){
+            ns.tprint("Purchasing personal server");
             [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered)
         } else {
-            //await ns.run("/build/pserver/upgradePServer.js", 1)
+            ns.tprint("Upgrading personal server");
+            await ns.run("/build/pserver/upgradePServer.js", 1)
             //await serverCal(ns, scannedServersFiltered)
             ns.run("build/util/serverCal.js", 1)
         }
 
-        await ns.sleep(30000)
-
         // Attempt to upgrade server to hack
         if (portHackLvl != 5) {
+            ns.tprint("Checking current portHackLvl");
             //await serverCal(ns, scannedServersFiltered);        
             portHackLvl = portHackLvlCal(ns);
             
             if (portHackLvl > oldPortHackLvl) {
+                ns.tprint("portHackLvl upgraded");
                 ns.run("build/util/serverCal.js", 1)
                 oldPortHackLvl = portHackLvl;
             }
