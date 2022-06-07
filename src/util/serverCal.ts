@@ -51,7 +51,7 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
         }
     }
 
-    //ns.killall("home")
+    ns.kill("/build/exec/hack.js", "home")
     await ns.sleep(3000)
 
     for (let i = 0; i < scannedServersFiltered.length; i++) {
@@ -59,5 +59,5 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
         ns.exec("/build/exec/hack.js", scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname)
     }
 
-    ns.run("/build/exec/hack.js", Math.floor(homeram - 10)/2.4, highestLvlServer[optimalServerIndex].hostname)    
+    ns.run("/build/exec/hack.js", Math.floor(homeram - 20)/2.4, highestLvlServer[optimalServerIndex].hostname)    
 }
