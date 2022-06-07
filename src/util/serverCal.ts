@@ -1,6 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
 import {portHackLvlCal} from './portHackLvl';
 import {scanServer} from './scan';
 
@@ -58,7 +55,9 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
 
   for (let i = 0; i < scannedServersFiltered.length; i++) {
     await ns.scp('/build/exec/hack.js', scannedServersFiltered[i].hostname);
-    ns.exec('/build/exec/hack.js', scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname);
+    if (portHackLvlCal >= scannedServersFiltered[i].numports) {
+      ns.exec('/build/exec/hack.js', scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname);
+    }
   }
 
   const homeThread = Math.floor(homeram - 48)/2.4;
