@@ -24,7 +24,7 @@ hs_err_pid*
 replay_pid*
 
 # For bitburner
-.vscode/*
+.vscode
 ts/*.js
 node_modules
 bitburner_scripts
