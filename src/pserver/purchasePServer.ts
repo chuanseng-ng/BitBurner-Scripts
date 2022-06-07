@@ -5,7 +5,7 @@ export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
     var defaultRamSize = 8;
 
     while (serverCount < ns.getPurchasedServerLimit()) {
-        if (ns.getServerMaxMoney("home") > ns.getPurchasedServerCost(defaultRamSize) || ns.getServerMaxMoney("home") == 0) {
+        if (ns.getPlayer().money > ns.getPurchasedServerCost(defaultRamSize)) {
             let hostName = "pserv-" + serverCount
             ns.purchaseServer(hostName, defaultRamSize);
             let hostNameServer = {hostname: hostName, ramsize: ns.getServerMaxRam(hostName)}
