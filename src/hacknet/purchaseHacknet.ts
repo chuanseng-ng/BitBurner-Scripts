@@ -7,6 +7,7 @@ export async function main(ns) {
         let nodeIndex = ns.hacknet.purchaseNode();
         ns.tprint("Purchasing hacknet node of index " + nodeIndex);
     } else {
+        ns.tprint("Skip purchase and going to upgrade")
         await ns.run("/build/hacknet/upgradeHacknet.js", 1);
     }
     
