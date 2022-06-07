@@ -5,11 +5,11 @@ export async function scanServer(ns) {
     let hostName = ns.getHostname();
     //ns.tprint(hostName)
     let scanArray = [hostName];
-    var scannedServers: any[] = [];
+    //var scannedServers: any[] = [];
     var scannedServersFiltered: any[] = [];
     let currentScanLength = 0;
 
-    ns.rm("server_list.txt");
+    //ns.rm("server_list.txt");
 
     while (currentScanLength < scanArray.length) {
         let previousScanLength = currentScanLength;
@@ -26,16 +26,16 @@ export async function scanServer(ns) {
                 server = {hostname: currentHost, ramsize: ns.getServerMaxRam(currentHost)};
             }
 
-            scannedServers.push(server);
+            //scannedServers.push(server);
             
             if (server.ramsize >= 8) {
                 scannedServersFiltered.push(server)
-                await ns.write("filter_list.txt", server.hostname, "a")
-                await ns.write("filter_list.txt", "\n", "a")
+                //await ns.write("filter_list.txt", server.hostname, "a")
+                //await ns.write("filter_list.txt", "\n", "a")
             }
 
-            await ns.write("server_list.txt", currentHost, "a")
-            await ns.write("server_list.txt", "\n", "a")
+            //await ns.write("server_list.txt", currentHost, "a")
+            //await ns.write("server_list.txt", "\n", "a")
             //ns.tprint(server.hostname);
 		    //ns.tprint('----------------');
 		    //ns.tprint('Difficulty: ' + server.hacklevel + ' | Potential: $' + server.maxmoney);
@@ -54,5 +54,6 @@ export async function scanServer(ns) {
     }
     await nukeChecker(ns, scannedServersFiltered)
 
-    return [scannedServers, scannedServersFiltered];
+    //return [scannedServers, scannedServersFiltered];
+    return scannedServersFiltered;
 }

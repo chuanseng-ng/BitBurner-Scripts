@@ -11,11 +11,12 @@ export async function main(ns) {
     let pushDone = 0;
     let playerHackLvl = ns.getPlayer().hacking;
     var highestLvlServer: any [] = [];
-    var scannedServers: any [] = [];
+    //var scannedServers: any [] = [];
     var scannedServersFiltered: any [] = [];
 
     portHackLvl = portHackLvlCal(ns);
-    [scannedServers, scannedServersFiltered] = await scanServer(ns);
+    //[scannedServers, scannedServersFiltered] = await scanServer(ns);
+    scannedServersFiltered = await scanServer(ns);
 
     while (pushDone != 1) {
         for (let i = 0; i < scannedServersFiltered.length; i++) {
@@ -45,16 +46,20 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
 
     // Kills all running scripts in all available servers
     for (let i = 0; i < scannedServersFiltered.length; i++) {
-        ns.killall(scannedServersFiltered[i].hostname);
+        if (scannedServersFiltered[i].hostname != "home") {
+            ns.killall(scannedServersFiltered[i].hostname);
+        }
     }
 
-    ns.killall("home")
-    await ns.sleep(3000)
+    ns.kill("/build/exec/hack.js", "home")
 
     for (let i = 0; i < scannedServersFiltered.length; i++) {
         await ns.scp("/build/exec/hack.js", scannedServersFiltered[i].hostname);
         ns.exec("/build/exec/hack.js", scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname)
     }
 
-    ns.run("/build/exec/hack.js", Math.floor(homeram - 10)/2.4, highestLvlServer[optimalServerIndex].hostname)    
+    let homeThread = Math.floor(homeram - 48)/2.4
+    if (homeThread > 0) {
+        ns.run("/build/exec/hack.js", homeThread, highestLvlServer[optimalServerIndex].hostname)    
+    }
 }
