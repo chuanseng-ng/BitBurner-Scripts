@@ -1,3 +1,4 @@
+// Script in-game ram requirement -> 13.55GB
 //import { serverCal } from "./util/serverCal";
 import { scanServer } from "./util/scan"
 import { portHackLvlCal } from "./util/portHackLvl";
@@ -62,6 +63,7 @@ export async function main(ns) {
             ns.run("/build/hacknet/upgradeHacknet.js", 1);
         }
 
+        // Sleep to slow down loop and let while loop work
         await ns.sleep(30000)
     }
 }
