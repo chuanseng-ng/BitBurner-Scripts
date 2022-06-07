@@ -24,6 +24,7 @@ export async function main(ns) {
         ns.tprint("Can't afford upgrade - current " + currentServerSize + "GB, can afford " + startRamSize + "GB");
         ns.tprint("Next server RAM upgrade is " + currentServerSize * 2 + "GB which costs " +
                     ns.getPurchasedServerCost(startRamSize * 2) / 1000 / 1000 + "bil")
+        await ns.sleep(60000);
     }
 
     ns.tprint("Buying " + existingServers.length + " " + startRamSize + "GB servers")
