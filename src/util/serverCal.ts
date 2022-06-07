@@ -58,5 +58,8 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
         ns.exec("/build/exec/hack.js", scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname)
     }
 
-    ns.run("/build/exec/hack.js", Math.floor(homeram - 32)/2.4, highestLvlServer[optimalServerIndex].hostname)    
+    let homeThread = Math.floor(homeram - 32)/2.4
+    if (homeThread > 0) {
+        ns.run("/build/exec/hack.js", Math.floor(homeram - 32)/2.4, highestLvlServer[optimalServerIndex].hostname)    
+    }
 }
