@@ -40,6 +40,9 @@ export async function main(ns) {
             await ns.run("build/util/serverCal.js", 1)
         }
 
+        // Sleep to let previous scripts deallocate memory
+        await ns.sleep(60000)
+
         // Attempt to upgrade server to hack
         if (portHackLvl != 5) {
             ns.tprint("Checking current portHackLvl");
@@ -53,6 +56,9 @@ export async function main(ns) {
             }
         }
 
+        // Sleep to let previous scripts deallocate memory
+        await ns.sleep(60000)
+
         // Attempt to buy/upgrade hacknet nodes
         if (numExistNodes != 30) {
             ns.tprint("Buying hacknet node")
@@ -60,10 +66,10 @@ export async function main(ns) {
             numExistNodes = ns.hacknet.numNodes();
         } else {
             ns.tprint("Upgrading hacknet node")
-            await ns.run("/build/hacknet/upgradeHacknet.js", 1);
+            ns.run("/build/hacknet/upgradeHacknet.js", 1);
         }
 
         // Sleep to slow down loop and let while loop work
-        await ns.sleep(30000)
+        await ns.sleep(60000)
     }
 }
