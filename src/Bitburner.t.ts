@@ -1,303 +1,304 @@
-declare module "Bitburner" {
+/* eslint-disable no-unused-vars */
+declare module 'Bitburner' {
     export type Host = string;
     export type Script = string;
     export type StockSymbol =
-        | "ECP"
-        | "MGCP"
-        | "BLD"
-        | "CLRK"
-        | "OMTK"
-        | "FSIG"
-        | "KGI"
-        | "FLCM"
-        | "STM"
-        | "DCOMM"
-        | "HLS"
-        | "VITA"
-        | "ICRS"
-        | "UNV"
-        | "AERO"
-        | "OMN"
-        | "SLRS"
-        | "GPH"
-        | "NVMD"
-        | "WDS"
-        | "LXO"
-        | "RHOC"
-        | "APHE"
-        | "SYSC"
-        | "CTK"
-        | "NTLK"
-        | "OMGA"
-        | "FNS"
-        | "SGC"
-        | "JGN"
-        | "CTYS"
-        | "MDYN"
-        | "TITN";
-    export type OrderType = "limitbuy" | "limitsell" | "stopbuy" | "stopsell";
-    export type OrderPos = "long" | "short";
+        | 'ECP'
+        | 'MGCP'
+        | 'BLD'
+        | 'CLRK'
+        | 'OMTK'
+        | 'FSIG'
+        | 'KGI'
+        | 'FLCM'
+        | 'STM'
+        | 'DCOMM'
+        | 'HLS'
+        | 'VITA'
+        | 'ICRS'
+        | 'UNV'
+        | 'AERO'
+        | 'OMN'
+        | 'SLRS'
+        | 'GPH'
+        | 'NVMD'
+        | 'WDS'
+        | 'LXO'
+        | 'RHOC'
+        | 'APHE'
+        | 'SYSC'
+        | 'CTK'
+        | 'NTLK'
+        | 'OMGA'
+        | 'FNS'
+        | 'SGC'
+        | 'JGN'
+        | 'CTYS'
+        | 'MDYN'
+        | 'TITN';
+    export type OrderType = 'limitbuy' | 'limitsell' | 'stopbuy' | 'stopsell';
+    export type OrderPos = 'long' | 'short';
     export type University =
-        | "Summit University"
-        | "Rothman University"
-        | "ZB Institute Of Technology";
+        | 'Summit University'
+        | 'Rothman University'
+        | 'ZB Institute Of Technology';
     export type UniversityCourse =
-        | "Study Computer Science"
-        | "Data Strucures"
-        | "Networks"
-        | "Algorithms"
-        | "Management"
-        | "Leadership";
+        | 'Study Computer Science'
+        | 'Data Strucures'
+        | 'Networks'
+        | 'Algorithms'
+        | 'Management'
+        | 'Leadership';
     export type Gym =
-        | "Crush Fitness Gym"
-        | "Snap Fitness Gym"
-        | "Iron Gym"
-        | "Powerhouse Gym"
-        | "Millenium Fitness Gym";
-    export type GymStat = "str" | "def" | "dex" | "agi";
+        | 'Crush Fitness Gym'
+        | 'Snap Fitness Gym'
+        | 'Iron Gym'
+        | 'Powerhouse Gym'
+        | 'Millenium Fitness Gym';
+    export type GymStat = 'str' | 'def' | 'dex' | 'agi';
     export type City =
-        | "Aevum"
-        | "Chongqing"
-        | "Sector-12"
-        | "New Tokyo"
-        | "Ishima"
-        | "Volhaven";
+        | 'Aevum'
+        | 'Chongqing'
+        | 'Sector-12'
+        | 'New Tokyo'
+        | 'Ishima'
+        | 'Volhaven';
     export type PurchaseableProgram =
-        | "brutessh.exe"
-        | "ftpcrack.exe"
-        | "relaysmtp.exe"
-        | "httpworm.exe"
-        | "sqlinject.exe"
-        | "deepscanv1.exe"
-        | "deepscanv2.exe"
-        | "autolink.exe";
-    export type CreatableProgram = PurchaseableProgram | "serverprofiler.exe";
+        | 'brutessh.exe'
+        | 'ftpcrack.exe'
+        | 'relaysmtp.exe'
+        | 'httpworm.exe'
+        | 'sqlinject.exe'
+        | 'deepscanv1.exe'
+        | 'deepscanv2.exe'
+        | 'autolink.exe';
+    export type CreatableProgram = PurchaseableProgram | 'serverprofiler.exe';
     export type CompanyName =
         // Sector-12
-        | "MegaCorp"
-        | "BladeIndustries"
-        | "FourSigma"
-        | "IcarusMicrosystems"
-        | "UniversalEnergy"
-        | "DeltaOne"
-        | "CIA"
-        | "NSA"
-        | "AlphaEnterprises"
-        | "CarmichaelSecurity"
-        | "FoodNStuff"
-        | "JoesGuns"
+        | 'MegaCorp'
+        | 'BladeIndustries'
+        | 'FourSigma'
+        | 'IcarusMicrosystems'
+        | 'UniversalEnergy'
+        | 'DeltaOne'
+        | 'CIA'
+        | 'NSA'
+        | 'AlphaEnterprises'
+        | 'CarmichaelSecurity'
+        | 'FoodNStuff'
+        | 'JoesGuns'
 
         // Aevum
-        | "ECorp"
-        | "BachmanAndAssociates"
-        | "ClarkeIncorporated"
-        | "OmniTekIncorporated"
-        | "FulcrumTechnologies"
-        | "GalacticCybersystems"
-        | "AeroCorp"
-        | "WatchdogSecurity"
-        | "RhoConstruction"
-        | "AevumPolice"
-        | "NetLinkTechnologies"
+        | 'ECorp'
+        | 'BachmanAndAssociates'
+        | 'ClarkeIncorporated'
+        | 'OmniTekIncorporated'
+        | 'FulcrumTechnologies'
+        | 'GalacticCybersystems'
+        | 'AeroCorp'
+        | 'WatchdogSecurity'
+        | 'RhoConstruction'
+        | 'AevumPolice'
+        | 'NetLinkTechnologies'
 
         // Volhaven
-        | "NWO"
-        | "HeliosLabs"
-        | "OmniaCybersystems"
-        | "LexoCorp"
-        | "SysCoreSecurities"
-        | "CompuTek"
+        | 'NWO'
+        | 'HeliosLabs'
+        | 'OmniaCybersystems'
+        | 'LexoCorp'
+        | 'SysCoreSecurities'
+        | 'CompuTek'
 
         // Chongqing
-        | "KuaiGongInternational"
-        | "SolarisSpaceSystems"
+        | 'KuaiGongInternational'
+        | 'SolarisSpaceSystems'
 
         // Ishima
-        | "StormTechnologies"
-        | "NovaMedical"
-        | "OmegaSoftware"
+        | 'StormTechnologies'
+        | 'NovaMedical'
+        | 'OmegaSoftware'
 
         // New Tokyo
-        | "DefComm"
-        | "VitaLife"
-        | "GlobalPharmaceuticals"
-        | "NoodleBar";
+        | 'DefComm'
+        | 'VitaLife'
+        | 'GlobalPharmaceuticals'
+        | 'NoodleBar';
     export type CompanyField =
-        | "software"
-        | "software consultant"
-        | "it"
-        | "security engineer"
-        | "network engineer"
-        | "business"
-        | "business consultant"
-        | "security"
-        | "agent"
-        | "employee"
-        | "part-time employee"
-        | "waiter"
-        | "part-time waiter";
+        | 'software'
+        | 'software consultant'
+        | 'it'
+        | 'security engineer'
+        | 'network engineer'
+        | 'business'
+        | 'business consultant'
+        | 'security'
+        | 'agent'
+        | 'employee'
+        | 'part-time employee'
+        | 'waiter'
+        | 'part-time waiter';
     export type FactionName =
-        | "Illuminati"
-        | "Daedalus"
-        | "The Covenant"
-        | "ECorp"
-        | "MegaCorp"
-        | "Bachman & Associates"
-        | "Blade Industries"
-        | "NWO"
-        | "Clarke Incorporated"
-        | "OmniTek Incorporated"
-        | "Four Sigma"
-        | "KuaiGong International"
-        | "Fulcrum Secret Technologies"
-        | "BitRunners"
-        | "The Black Hand"
-        | "NiteSec"
-        | "Aevum"
-        | "Chongqing"
-        | "Ishima"
-        | "New Tokyo"
-        | "Sector-12"
-        | "Volhaven"
-        | "Speakers for the Dead"
-        | "The Dark Army"
-        | "The Syndicate"
-        | "Silhouette"
-        | "Tetrads"
-        | "Slum Snakes"
-        | "Netburners"
-        | "Tian Di Hui"
-        | "CyberSec"
-        | "Bladeburners";
+        | 'Illuminati'
+        | 'Daedalus'
+        | 'The Covenant'
+        | 'ECorp'
+        | 'MegaCorp'
+        | 'Bachman & Associates'
+        | 'Blade Industries'
+        | 'NWO'
+        | 'Clarke Incorporated'
+        | 'OmniTek Incorporated'
+        | 'Four Sigma'
+        | 'KuaiGong International'
+        | 'Fulcrum Secret Technologies'
+        | 'BitRunners'
+        | 'The Black Hand'
+        | 'NiteSec'
+        | 'Aevum'
+        | 'Chongqing'
+        | 'Ishima'
+        | 'New Tokyo'
+        | 'Sector-12'
+        | 'Volhaven'
+        | 'Speakers for the Dead'
+        | 'The Dark Army'
+        | 'The Syndicate'
+        | 'Silhouette'
+        | 'Tetrads'
+        | 'Slum Snakes'
+        | 'Netburners'
+        | 'Tian Di Hui'
+        | 'CyberSec'
+        | 'Bladeburners';
 
     export type GangName =
-        | "Slum Snakes"
-        | "Tetrads"
-        | "The Syndicate"
-        | "The Dark Army"
-        | "Speakers for the Dead"
-        | "NiteSec"
-        | "The Black Hand";
-    export type FactionWork = "hacking" | "field" | "security";
+        | 'Slum Snakes'
+        | 'Tetrads'
+        | 'The Syndicate'
+        | 'The Dark Army'
+        | 'Speakers for the Dead'
+        | 'NiteSec'
+        | 'The Black Hand';
+    export type FactionWork = 'hacking' | 'field' | 'security';
     export type Crime =
-        | "shoplift"
-        | "rob store"
-        | "mug"
-        | "larceny"
-        | "deal drugs"
-        | "bond forgery"
-        | "traffick arms"
-        | "homicide"
-        | "grand theft auto"
-        | "kidnap"
-        | "assassinate"
-        | "heist";
+        | 'shoplift'
+        | 'rob store'
+        | 'mug'
+        | 'larceny'
+        | 'deal drugs'
+        | 'bond forgery'
+        | 'traffick arms'
+        | 'homicide'
+        | 'grand theft auto'
+        | 'kidnap'
+        | 'assassinate'
+        | 'heist';
     export type AugmentName =
-        | "Augmented Targeting I"
-        | "Augmented Targeting II"
-        | "Augmented Targeting III"
-        | "Synthetic Heart"
-        | "Synfibril Muscle"
-        | "Combat Rib I"
-        | "Combat Rib II"
-        | "Combat Rib III"
-        | "Nanofiber Weave"
-        | "NEMEAN Subdermal Weave"
-        | "Wired Reflexes"
-        | "Graphene Bone Lacings"
-        | "Bionic Spine"
-        | "Graphene Bionic Spine Upgrade"
-        | "Bionic Legs"
-        | "Graphene Bionic Legs Upgrade"
-        | "Speech Processor Implant"
-        | "TITN-41 Gene-Modification Injection"
-        | "Enhanced Social Interaction Implant"
-        | "BitWire"
-        | "Artificial Bio-neural Network Implant"
-        | "Artificial Synaptic Potentiation"
-        | "Enhanced Myelin Sheathing"
-        | "Synaptic Enhancement Implant"
-        | "Neural-Retention Enhancement"
-        | "DataJack"
-        | "Embedded Netburner Module"
-        | "Embedded Netburner Module Core Implant"
-        | "Embedded Netburner Module Core V2 Upgrade"
-        | "Embedded Netburner Module Core V3 Upgrade"
-        | "Embedded Netburner Module Analyze Engine"
-        | "Embedded Netburner Module Direct Memory Access Upgrade"
-        | "Neuralstimulator"
-        | "Neural Accelerator"
-        | "Cranial Signal Processors - Gen I"
-        | "Cranial Signal Processors - Gen II"
-        | "Cranial Signal Processors - Gen III"
-        | "Cranial Signal Processors - Gen IV"
-        | "Cranial Signal Processors - Gen V"
-        | "Neuronal Densification"
-        | "Nuoptimal Nootropic Injector Implant"
-        | "Speech Enhancement"
-        | "FocusWire"
-        | "PC Direct-Neural Interface"
-        | "PC Direct-Neural Interface Optimization Submodule"
-        | "PC Direct-Neural Interface NeuroNet Injector"
-        | "ADR-V1 Pheromone Gene"
-        | "ADR-V2 Pheromone Gene"
-        | "The Shadow's Simulacrum"
-        | "Hacknet Node CPU Architecture Neural-Upload"
-        | "Hacknet Node Cache Architecture Neural-Upload"
-        | "Hacknet Node NIC Architecture Neural-Upload"
-        | "Hacknet Node Kernel Direct-Neural Interface"
-        | "Hacknet Node Core Direct-Neural Interface"
-        | "NeuroFlux Governor"
-        | "Neurotrainer I"
-        | "Neurotrainer II"
-        | "Neurotrainer III"
-        | "HyperSight Corneal Implant"
-        | "LuminCloaking-V1 Skin Implant"
-        | "LuminCloaking-V2 Skin Implant"
-        | "HemoRecirculator"
-        | "SmartSonar Implant"
-        | "Power Recirculation Core"
-        | "QLink"
-        | "The Red Pill"
-        | "SPTN-97 Gene Modification"
-        | "ECorp HVMind Implant"
-        | "CordiARC Fusion Reactor"
-        | "SmartJaw"
-        | "Neotra"
-        | "Xanipher"
-        | "nextSENS Gene Modification"
-        | "OmniTek InfoLoad"
-        | "Photosynthetic Cells"
-        | "BitRunners Neurolink"
-        | "The Black Hand"
-        | "CRTX42-AA Gene Modification"
-        | "Neuregen Gene Modification"
-        | "CashRoot Starter Kit"
-        | "NutriGen Implant"
-        | "INFRARET Enhancement"
-        | "DermaForce Particle Barrier"
-        | "Graphene BranchiBlades Upgrade"
-        | "Graphene Bionic Arms Upgrade"
-        | "BrachiBlades"
-        | "Bionic Arms"
-        | "Social Negotiation Assistant (S.N.A)"
-        | "EsperTech Bladeburner Eyewear"
-        | "EMS-4 Recombination"
-        | "ORION-MKIV Shoulder"
-        | "Hyperion Plasma Cannon V1"
-        | "Hyperion Plasma Cannon V2"
-        | "GOLEM Serum"
-        | "Vangelis Virus"
-        | "Vangelis Virus 3.0"
-        | "I.N.T.E.R.L.I.N.K.E.D"
-        | "Blade's Runners"
-        | "BLADE-51b Tesla Armor"
-        | "BLADE-51b Tesla Armor: Power Cells Upgrade"
-        | "BLADE-51b Tesla Armor: Energy Shielding Upgrade"
-        | "BLADE-51b Tesla Armor: Unibeam Upgrade"
-        | "BLADE-51b Tesla Armor: Omnibeam Upgrade"
-        | "BLADE-51b Tesla Armor: IPU Upgrade"
-        | "The Blade's Simulacrum";
+        | 'Augmented Targeting I'
+        | 'Augmented Targeting II'
+        | 'Augmented Targeting III'
+        | 'Synthetic Heart'
+        | 'Synfibril Muscle'
+        | 'Combat Rib I'
+        | 'Combat Rib II'
+        | 'Combat Rib III'
+        | 'Nanofiber Weave'
+        | 'NEMEAN Subdermal Weave'
+        | 'Wired Reflexes'
+        | 'Graphene Bone Lacings'
+        | 'Bionic Spine'
+        | 'Graphene Bionic Spine Upgrade'
+        | 'Bionic Legs'
+        | 'Graphene Bionic Legs Upgrade'
+        | 'Speech Processor Implant'
+        | 'TITN-41 Gene-Modification Injection'
+        | 'Enhanced Social Interaction Implant'
+        | 'BitWire'
+        | 'Artificial Bio-neural Network Implant'
+        | 'Artificial Synaptic Potentiation'
+        | 'Enhanced Myelin Sheathing'
+        | 'Synaptic Enhancement Implant'
+        | 'Neural-Retention Enhancement'
+        | 'DataJack'
+        | 'Embedded Netburner Module'
+        | 'Embedded Netburner Module Core Implant'
+        | 'Embedded Netburner Module Core V2 Upgrade'
+        | 'Embedded Netburner Module Core V3 Upgrade'
+        | 'Embedded Netburner Module Analyze Engine'
+        | 'Embedded Netburner Module Direct Memory Access Upgrade'
+        | 'Neuralstimulator'
+        | 'Neural Accelerator'
+        | 'Cranial Signal Processors - Gen I'
+        | 'Cranial Signal Processors - Gen II'
+        | 'Cranial Signal Processors - Gen III'
+        | 'Cranial Signal Processors - Gen IV'
+        | 'Cranial Signal Processors - Gen V'
+        | 'Neuronal Densification'
+        | 'Nuoptimal Nootropic Injector Implant'
+        | 'Speech Enhancement'
+        | 'FocusWire'
+        | 'PC Direct-Neural Interface'
+        | 'PC Direct-Neural Interface Optimization Submodule'
+        | 'PC Direct-Neural Interface NeuroNet Injector'
+        | 'ADR-V1 Pheromone Gene'
+        | 'ADR-V2 Pheromone Gene'
+        | 'The Shadow\'s Simulacrum'
+        | 'Hacknet Node CPU Architecture Neural-Upload'
+        | 'Hacknet Node Cache Architecture Neural-Upload'
+        | 'Hacknet Node NIC Architecture Neural-Upload'
+        | 'Hacknet Node Kernel Direct-Neural Interface'
+        | 'Hacknet Node Core Direct-Neural Interface'
+        | 'NeuroFlux Governor'
+        | 'Neurotrainer I'
+        | 'Neurotrainer II'
+        | 'Neurotrainer III'
+        | 'HyperSight Corneal Implant'
+        | 'LuminCloaking-V1 Skin Implant'
+        | 'LuminCloaking-V2 Skin Implant'
+        | 'HemoRecirculator'
+        | 'SmartSonar Implant'
+        | 'Power Recirculation Core'
+        | 'QLink'
+        | 'The Red Pill'
+        | 'SPTN-97 Gene Modification'
+        | 'ECorp HVMind Implant'
+        | 'CordiARC Fusion Reactor'
+        | 'SmartJaw'
+        | 'Neotra'
+        | 'Xanipher'
+        | 'nextSENS Gene Modification'
+        | 'OmniTek InfoLoad'
+        | 'Photosynthetic Cells'
+        | 'BitRunners Neurolink'
+        | 'The Black Hand'
+        | 'CRTX42-AA Gene Modification'
+        | 'Neuregen Gene Modification'
+        | 'CashRoot Starter Kit'
+        | 'NutriGen Implant'
+        | 'INFRARET Enhancement'
+        | 'DermaForce Particle Barrier'
+        | 'Graphene BranchiBlades Upgrade'
+        | 'Graphene Bionic Arms Upgrade'
+        | 'BrachiBlades'
+        | 'Bionic Arms'
+        | 'Social Negotiation Assistant (S.N.A)'
+        | 'EsperTech Bladeburner Eyewear'
+        | 'EMS-4 Recombination'
+        | 'ORION-MKIV Shoulder'
+        | 'Hyperion Plasma Cannon V1'
+        | 'Hyperion Plasma Cannon V2'
+        | 'GOLEM Serum'
+        | 'Vangelis Virus'
+        | 'Vangelis Virus 3.0'
+        | 'I.N.T.E.R.L.I.N.K.E.D'
+        | 'Blade\'s Runners'
+        | 'BLADE-51b Tesla Armor'
+        | 'BLADE-51b Tesla Armor: Power Cells Upgrade'
+        | 'BLADE-51b Tesla Armor: Energy Shielding Upgrade'
+        | 'BLADE-51b Tesla Armor: Unibeam Upgrade'
+        | 'BLADE-51b Tesla Armor: Omnibeam Upgrade'
+        | 'BLADE-51b Tesla Armor: IPU Upgrade'
+        | 'The Blade\'s Simulacrum';
 
     export interface CrimeStats {
         /** Number representing the difficulty of the crime. Used for success chance calculations */
@@ -427,9 +428,9 @@ declare module "Bitburner" {
         /** Price per share */
         price: number;
         /** Order type */
-        type: "Limit Buy Order" | "Limit Sell Order" | "Stop Buy Order" | "Stop Buy Order";
+        type: 'Limit Buy Order' | 'Limit Sell Order' | 'Stop Buy Order' | 'Stop Buy Order';
         /** Order position */
-        position: "S" | "L";
+        position: 'S' | 'L';
     }
     export type StockOrder = {
         /** Stock Symbol */
@@ -583,16 +584,16 @@ declare module "Bitburner" {
     }
 
     export type HashUpgrades =
-        | "Sell for Money"
-        | "Sell for Corporation Funds"
-        | "Reduce Minimum Security"
-        | "Increase Maximum Money"
-        | "Improve Studying"
-        | "Improve Gym Training"
-        | "Exchange for Corporation Research"
-        | "Exchange for Bladeburner Rank"
-        | "Exchange for Bladeburner SP"
-        | "Generate Coding Contract";
+        | 'Sell for Money'
+        | 'Sell for Corporation Funds'
+        | 'Reduce Minimum Security'
+        | 'Increase Maximum Money'
+        | 'Improve Studying'
+        | 'Improve Gym Training'
+        | 'Exchange for Corporation Research'
+        | 'Exchange for Bladeburner Rank'
+        | 'Exchange for Bladeburner SP'
+        | 'Generate Coding Contract';
 
     export interface PlayerStats {
         /** Hacking level */
@@ -707,94 +708,94 @@ declare module "Bitburner" {
     }
 
     export type BladeburnerContracts =
-        | "Tracking"
-        | "Bounty Hunter"
-        | "Retirement";
+        | 'Tracking'
+        | 'Bounty Hunter'
+        | 'Retirement';
 
     export type BladeburnerOperations =
-        | "Investigation"
-        | "Undercover Operation"
-        | "Sting Operation"
-        | "Raid"
-        | "Stealth Retirement Operation"
-        | "Assassination";
+        | 'Investigation'
+        | 'Undercover Operation'
+        | 'Sting Operation'
+        | 'Raid'
+        | 'Stealth Retirement Operation'
+        | 'Assassination';
 
     export type BladeburnerBlackOps =
-        | "Operation Typhoon"
-        | "Operation Zero"
-        | "Operation X"
-        | "Operation Titan"
-        | "Operation Ares"
-        | "Operation Archangel"
-        | "Operation Juggernaut"
-        | "Operation Red Dragon"
-        | "Operation K"
-        | "Operation Deckard"
-        | "Operation Tyrell"
-        | "Operation Wallace"
-        | "Operation Shoulder of Orion"
-        | "Operation Hyron"
-        | "Operation Morpheus"
-        | "Operation Ion Storm"
-        | "Operation Annihilus"
-        | "Operation Ultron"
-        | "Operation Centurion"
-        | "Operation Vindictus"
-        | "Operation Daedalus";
+        | 'Operation Typhoon'
+        | 'Operation Zero'
+        | 'Operation X'
+        | 'Operation Titan'
+        | 'Operation Ares'
+        | 'Operation Archangel'
+        | 'Operation Juggernaut'
+        | 'Operation Red Dragon'
+        | 'Operation K'
+        | 'Operation Deckard'
+        | 'Operation Tyrell'
+        | 'Operation Wallace'
+        | 'Operation Shoulder of Orion'
+        | 'Operation Hyron'
+        | 'Operation Morpheus'
+        | 'Operation Ion Storm'
+        | 'Operation Annihilus'
+        | 'Operation Ultron'
+        | 'Operation Centurion'
+        | 'Operation Vindictus'
+        | 'Operation Daedalus';
 
     export type BladeburnerGenActions =
-        | "Training"
-        | "Field Analysis"
-        | "Recruitment"
-        | "Diplomacy"
-        | "Hyperbolic Regeneration Chamber";
+        | 'Training'
+        | 'Field Analysis'
+        | 'Recruitment'
+        | 'Diplomacy'
+        | 'Hyperbolic Regeneration Chamber';
 
     export type BladeburnerSkills =
-        | "Blade's Intuition"
-        | "Cloak"
-        | "Marksman"
-        | "Weapon Proficiency"
-        | "Short-Circuit"
-        | "Digital Observer"
-        | "Tracer"
-        | "Overclock"
-        | "Reaper"
-        | "Evasive System"
-        | "Datamancer"
-        | "Cyber's Edge"
-        | "Hands of Midas"
-        | "Hyperdrive";
+        | 'Blade\'s Intuition'
+        | 'Cloak'
+        | 'Marksman'
+        | 'Weapon Proficiency'
+        | 'Short-Circuit'
+        | 'Digital Observer'
+        | 'Tracer'
+        | 'Overclock'
+        | 'Reaper'
+        | 'Evasive System'
+        | 'Datamancer'
+        | 'Cyber\'s Edge'
+        | 'Hands of Midas'
+        | 'Hyperdrive';
 
     export type BladeburnerActTypes =
-        | "contracts"
-        | "operations"
-        | "black ops"
-        | "general";
+        | 'contracts'
+        | 'operations'
+        | 'black ops'
+        | 'general';
 
     export interface BladeburnerCurAction {
         /** Type of Action */
-        type: BladeburnerActTypes | "Idle";
+        type: BladeburnerActTypes | 'Idle';
         /** Name of Action */
         name: BladeburnerGenActions | BladeburnerContracts | BladeburnerOperations | BladeburnerBlackOps;
     }
 
     export type CodingContractTypes =
-        | "Find Largest Prime Factor"
-        | "Subarray with Maximum Sum"
-        | "Total Ways to Sum"
-        | "Spiralize Matrix"
-        | "Array Jumping Game"
-        | "Merge Overlapping Intervals"
-        | "Generate IP Addresses"
-        | "Algorithmic Stock Trader I"
-        | "Algorithmic Stock Trader II"
-        | "Algorithmic Stock Trader III"
-        | "Algorithmic Stock Trader IV"
-        | "Minimum Path Sum in a Triangle"
-        | "Unique Paths in a Grid I"
-        | "Unique Paths in a Grid II"
-        | "Sanitize Parentheses in Expression"
-        | "Find All Valid Math Expressions";
+        | 'Find Largest Prime Factor'
+        | 'Subarray with Maximum Sum'
+        | 'Total Ways to Sum'
+        | 'Spiralize Matrix'
+        | 'Array Jumping Game'
+        | 'Merge Overlapping Intervals'
+        | 'Generate IP Addresses'
+        | 'Algorithmic Stock Trader I'
+        | 'Algorithmic Stock Trader II'
+        | 'Algorithmic Stock Trader III'
+        | 'Algorithmic Stock Trader IV'
+        | 'Minimum Path Sum in a Triangle'
+        | 'Unique Paths in a Grid I'
+        | 'Unique Paths in a Grid II'
+        | 'Sanitize Parentheses in Expression'
+        | 'Find All Valid Math Expressions';
 
     export interface GangGenInfo {
         /** Name of faction that the gang belongs to ("Slum Snakes", etc.) */
@@ -831,74 +832,74 @@ declare module "Bitburner" {
     };
 
     export type GangEquipment =
-        | "Baseball Bat"
-        | "Katana"
-        | "Glock 18C"
-        | "P90C"
-        | "Steyr AUG"
-        | "AK-47"
-        | "M15A10 Assault Rifle"
-        | "AWM Sniper Rifle"
-        | "Bulletproof Vest"
-        | "Full Body Armor"
-        | "Liquid Body Armor"
-        | "Graphene Plating Armor"
-        | "Ford Flex V20"
-        | "ATX1070 Superbike"
-        | "Mercedes-Benz S9001"
-        | "White Ferrari"
-        | "NUKE Rootkit"
-        | "Soulstealer Rootkit"
-        | "Demon Rootkit"
-        | "Hmap Node"
-        | "Jack the Ripper";
+        | 'Baseball Bat'
+        | 'Katana'
+        | 'Glock 18C'
+        | 'P90C'
+        | 'Steyr AUG'
+        | 'AK-47'
+        | 'M15A10 Assault Rifle'
+        | 'AWM Sniper Rifle'
+        | 'Bulletproof Vest'
+        | 'Full Body Armor'
+        | 'Liquid Body Armor'
+        | 'Graphene Plating Armor'
+        | 'Ford Flex V20'
+        | 'ATX1070 Superbike'
+        | 'Mercedes-Benz S9001'
+        | 'White Ferrari'
+        | 'NUKE Rootkit'
+        | 'Soulstealer Rootkit'
+        | 'Demon Rootkit'
+        | 'Hmap Node'
+        | 'Jack the Ripper';
 
     export type GangEquipmentType =
-        | "Weapon"
-        | "Armor"
-        | "Vehicle"
-        | "Rootkit"
-        | "Augmentation";
+        | 'Weapon'
+        | 'Armor'
+        | 'Vehicle'
+        | 'Rootkit'
+        | 'Augmentation';
 
     export type GangAugmentations =
-        | "Bionic Arms"
-        | "Bionic Legs"
-        | "Bionic Spine"
-        | "BrachiBlades"
-        | "Nanofiber Weave"
-        | "Synthetic Heart"
-        | "Synfibril Muscle"
-        | "BitWire"
-        | "Neuralstimulator"
-        | "DataJack"
-        | "Graphene Bone Lacings";
+        | 'Bionic Arms'
+        | 'Bionic Legs'
+        | 'Bionic Spine'
+        | 'BrachiBlades'
+        | 'Nanofiber Weave'
+        | 'Synthetic Heart'
+        | 'Synfibril Muscle'
+        | 'BitWire'
+        | 'Neuralstimulator'
+        | 'DataJack'
+        | 'Graphene Bone Lacings';
 
     export type GangTasks =
-        | "Unassigned"
-        | "Ransomware"
-        | "Phishing"
-        | "Identity Theft"
-        | "DDoS Attacks"
-        | "Plant Virus"
-        | "Fraud & Counterfeiting"
-        | "Money Laundering"
-        | "Cyberterrorism"
-        | "Ethical Hacking"
-        | "Mug People"
-        | "Deal Drugs"
-        | "Strongarm Civilians"
-        | "Run a Con"
-        | "Armed Robbery"
-        | "Traffick Illegal Arms"
-        | "Threaten & Blackmail"
-        | "Human Trafficking"
-        | "Terrorism"
-        | "Vigilante Justice"
-        | "Train Combat"
-        | "Train Hacking"
-        | "Train Charisma"
-        | "Territory Warfare";
-    
+        | 'Unassigned'
+        | 'Ransomware'
+        | 'Phishing'
+        | 'Identity Theft'
+        | 'DDoS Attacks'
+        | 'Plant Virus'
+        | 'Fraud & Counterfeiting'
+        | 'Money Laundering'
+        | 'Cyberterrorism'
+        | 'Ethical Hacking'
+        | 'Mug People'
+        | 'Deal Drugs'
+        | 'Strongarm Civilians'
+        | 'Run a Con'
+        | 'Armed Robbery'
+        | 'Traffick Illegal Arms'
+        | 'Threaten & Blackmail'
+        | 'Human Trafficking'
+        | 'Terrorism'
+        | 'Vigilante Justice'
+        | 'Train Combat'
+        | 'Train Hacking'
+        | 'Train Charisma'
+        | 'Territory Warfare';
+
     export interface GangTasksStats {
         /** Task name */
         name: GangTasks;
@@ -1078,13 +1079,13 @@ declare module "Bitburner" {
         /** task type */
         task: string;
         /** crime currently attempting, if any */
-        crime: Crime | "";
+        crime: Crime | '';
         /** location of the task, if any */
-        location: City | "";
+        location: City | '';
         /** stat being trained at the gym, if any */
-        gymStatType: GymStat | "";
+        gymStatType: GymStat | '';
         /** faction work type being performed, if any */
-        factionWorkType: FactionWork | "";
+        factionWorkType: FactionWork | '';
     }
 
     export interface TIX {
@@ -1100,7 +1101,7 @@ declare module "Bitburner" {
         /**
          * Returns the price of a stock, given its symbol (NOT the company name).
          * The symbol is a sequence of two to four capital letters.
-         * 
+         *
          * The stock’s price is the average of its bid and ask price
          *
          * @example
@@ -1116,7 +1117,7 @@ declare module "Bitburner" {
         /**
          * Given a stock’s symbol (NOT the company name), returns the ask price of that stock.
          * The symbol is a sequence of two to four capital letters.
-         * 
+         *
          * @ramCost 2 GB
          * @param {string} sym Stock symbol.
          * @returns {number} The ask price of a stock.
@@ -1126,7 +1127,7 @@ declare module "Bitburner" {
         /**
          * Given a stock’s symbol (NOT the company name), returns the bid price of that stock.
          * The symbol is a sequence of two to four capital letters.
-         * 
+         *
          * @ramCost 2 GB
          * @param {string} sym Stock symbol.
          * @returns {number} The bid price of a stock.
@@ -3469,9 +3470,9 @@ declare module "Bitburner" {
 
         /**
          * Opens a script’s logs. This is functionally the same as the tail Terminal command.
-         * 
+         *
          * If the function is called with no arguments, it will open the current script’s logs.
-         * 
+         *
          * Otherwise, the fn, hostname/ip, and args… arguments can be used to get the logs from another script.
          * Remember that scripts are uniquely identified by both their names and arguments.
          *
@@ -3584,13 +3585,13 @@ declare module "Bitburner" {
          * Run a script as a separate process. This function can only be used to run scripts located on the
          * current server (the server running the script that calls this function). Requires a significant
          * amount of RAM to run this command.
-         * 
+         *
          * If the script was successfully started, then this functions returns the PID of that script.
          * Otherwise, it returns 0.
-         * 
+         *
          * PID stands for Process ID. The PID is a unique identifier for each script.
          * The PID will always be a positive integer.
-         * 
+         *
          * Running this function with a numThreads argument of 0 will return 0 without running the script.
          * However, running this function with a negative numThreads argument will cause a runtime error.
          *
@@ -3627,10 +3628,10 @@ declare module "Bitburner" {
          *
          * If the script was successfully started, then this functions returns the PID of that script.
          * Otherwise, it returns 0.
-         * 
+         *
          * PID stands for Process ID. The PID is a unique identifier for each script.
          * The PID will always be a positive integer.
-         * 
+         *
          * Running this function with a numThreads argument of 0 will return 0 without running the script.
          * However, running this function with a negative numThreads argument will cause a runtime error.
          *
@@ -4108,7 +4109,7 @@ declare module "Bitburner" {
          * @param {number} ram Amount of RAM of the purchased server. Must be a power of 2 (2, 4, 8, 16, etc.). Maximum value of 1048576 (2^20).
          * @returns {string} The hostname of the newly purchased server.
          */
-        purchaseServer (hostname: Host, ram: number): Host | "";
+        purchaseServer (hostname: Host, ram: number): Host | '';
 
         /**
          * Deletes one of your purchased servers, which is specified by its hostname.
@@ -4168,7 +4169,7 @@ declare module "Bitburner" {
          * @param {string} data Data to write.
          * @param {string} mode Defines the write mode. Only valid when writing to text files.
          */
-        write (handle: Handle, data?: string | string[] | number, mode?: "w" | "a"): void;
+        write (handle: Handle, data?: string | string[] | number, mode?: 'w' | 'a'): void;
 
         /**
          * Attempts to write data to the specified Netscript Port.

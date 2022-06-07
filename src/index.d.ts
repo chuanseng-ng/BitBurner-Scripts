@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 declare global { const NS: NS; }
 
 /**
@@ -292,18 +293,18 @@ export interface AugmentPair {
  * @public
  */
 export enum PositionTypes {
-  Long = "L",
-  Short = "S",
+  Long = 'L',
+  Short = 'S',
 }
 
 /**
  * @public
  */
 export enum OrderTypes {
-  LimitBuy = "Limit Buy Order",
-  LimitSell = "Limit Sell Order",
-  StopBuy = "Stop Buy Order",
-  StopSell = "Stop Sell Order",
+  LimitBuy = 'Limit Buy Order',
+  LimitSell = 'Limit Sell Order',
+  StopBuy = 'Stop Buy Order',
+  StopSell = 'Stop Sell Order',
 }
 
 /**
@@ -863,13 +864,13 @@ export interface GangOtherInfoObject {
  * @public
  */
 export interface GangOtherInfo {
-  "Slum Snakes": GangOtherInfoObject;
+  'Slum Snakes': GangOtherInfoObject;
   Tetrads: GangOtherInfoObject;
-  "The Syndicate": GangOtherInfoObject;
-  "The Dark Army": GangOtherInfoObject;
-  "Speakers for the Dead": GangOtherInfoObject;
+  'The Syndicate': GangOtherInfoObject;
+  'The Dark Army': GangOtherInfoObject;
+  'Speakers for the Dead': GangOtherInfoObject;
   NiteSec: GangOtherInfoObject;
-  "The Black Hand": GangOtherInfoObject;
+  'The Black Hand': GangOtherInfoObject;
 }
 
 /**
@@ -6012,7 +6013,7 @@ export interface NS {
    * @param data - Data to write.
    * @param mode - Defines the write mode. Only valid when writing to text files.
    */
-  write(handle: string, data?: string[] | number | string, mode?: "w" | "a"): Promise<void>;
+  write(handle: string, data?: string[] | number | string, mode?: 'w' | 'a'): Promise<void>;
 
   /**
    * Attempt to write to a port.
@@ -6375,7 +6376,7 @@ export interface NS {
    */
   prompt(
     txt: string,
-    options?: { type?: "boolean" | "text" | "select" | undefined; choices?: string[] },
+    options?: { type?: 'boolean' | 'text' | 'select' | undefined; choices?: string[] },
   ): Promise<boolean | string>;
 
   /**
@@ -6591,10 +6592,10 @@ export interface NS {
 
 /** @public */
 export enum ToastVariant {
-  SUCCESS = "success",
-  WARNING = "warning",
-  ERROR = "error",
-  INFO = "info",
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  ERROR = 'error',
+  INFO = 'info',
 }
 
 /** @public */
@@ -7242,7 +7243,7 @@ interface EmployeeJobs {
   Engineer: number;
   Business: number;
   Management: number;
-  "Research & Development": number;
+  'Research & Development': number;
   Training: number;
   Unassigned: number;
 }

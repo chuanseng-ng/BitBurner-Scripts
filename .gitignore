@@ -30,3 +30,4 @@ node_modules
 bitburner_scripts
 package-lock.json
 build
+.eslintrc.js
