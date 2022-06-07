@@ -60,7 +60,7 @@ export async function main(ns) {
             numExistNodes = ns.hacknet.numNodes();
         } else {
             ns.tprint("Upgrading hacknet node")
-            ns.run("/build/hacknet/upgradeHacknet.js", 1);
+            await ns.run("/build/hacknet/upgradeHacknet.js", 1);
         }
 
         // Sleep to slow down loop and let while loop work

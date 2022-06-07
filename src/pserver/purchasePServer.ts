@@ -1,7 +1,7 @@
 //import { serverCal } from "../util/serverCal";
 
 /** @param {NS ns} **/
-export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
+export function purchaseServer(ns, serverCount, scannedServersFiltered) {
     var defaultRamSize = 8;
 
     //while (serverCount < ns.getPurchasedServerLimit()) {
