@@ -7,6 +7,7 @@ import { purchaseServer } from "./pserver/purchasePServer";
 export async function main(ns) {
     let portHackLvl = 0;
     let oldPortHackLvl = 0;
+    let numExistNodes = 0;
     let serverCount = ns.getPurchasedServers().length;
 
     // Call scan function to dump all available servers in game
@@ -25,7 +26,7 @@ export async function main(ns) {
     ns.run("/build/util/serverCal.js", 1);
 
     // Loop will be killed after sleep - Check on reason
-    while (portHackLvl !=5 || serverCount != 25) {
+    while (portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) {
         // Attempt to buy maximum number of pservers
         // Then attempt to upgrade pservers to max RAM
         if (serverCount != 25){
@@ -49,6 +50,13 @@ export async function main(ns) {
                 ns.run("build/util/serverCal.js", 1)
                 oldPortHackLvl = portHackLvl;
             }
+        }
+
+        if (numExistNodes != 30) {
+            ns.run("/build/hacknet/purchaseHacknet.js", 1);
+            numExistNodes = ns.hacknet.numNodes();
+        } else {
+            ns.run("/build/hacknet/upgradeHacknet.js", 1);
         }
 
         await ns.sleep(30000)
