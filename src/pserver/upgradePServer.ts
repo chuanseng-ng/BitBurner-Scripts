@@ -9,6 +9,7 @@ export async function main(ns) {
     let playerMoney = ns.getPlayer().money
     var existingServers = ns.getPurchasedServers()
     let currentServerSize = ns.getServerMaxRam(existingServers[0])
+    let playerMoneyByServer = playerMoney / existingServers.length
 
     if (existingServers.length != 0) {
         for (let i = 0; i < existingServers.length; i++) {
@@ -18,11 +19,11 @@ export async function main(ns) {
             }
         }
 
-        while (startRamSize * 2 <= pserverMaxRam && ns.getPurchasedServerCost(startRamSize * 2) < playerMoney / existingServers.length) {
+        while (startRamSize * 2 <= pserverMaxRam && ns.getPurchasedServerCost(startRamSize * 2) < playerMoneyByServer) {
             startRamSize *= 2
         }
 
-        if (startRamSize < 2 || startRamSize < currentServerSize) {
+        if (startRamSize <= 8 || startRamSize <= currentServerSize) {
             ns.tprint("Can't afford upgrade - current " + currentServerSize + "GB, can afford " + startRamSize + "GB");
             ns.tprint("Next server RAM upgrade is " + currentServerSize * 2 + "GB which costs " +
                         ns.getPurchasedServerCost(startRamSize * 2) / 1000 / 1000 + "bil")
