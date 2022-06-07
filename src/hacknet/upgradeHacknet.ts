@@ -37,9 +37,9 @@ export async function main(ns) {
     if (canUpgradeLevel.length > 0) {
         let cheapestIndex = canUpgradeLevel.sort((a,b) => a.level - b.level)[0];
         let cheapest = existNodes.indexOf(cheapestIndex);
-        if (ns.hacknet.getLevelUpgradeCost(cheapest, 5) < playerMoney) {
+        if (ns.hacknet.getLevelUpgradeCost(cheapest, 10) < playerMoney) {
             ns.tprint("Upgrading level of node " + cheapest);
-            ns.hacknet.upgradeLevel(cheapest, 5);
+            ns.hacknet.upgradeLevel(cheapest, 10);
         }
     }
 
