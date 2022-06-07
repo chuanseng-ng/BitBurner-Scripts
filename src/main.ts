@@ -23,7 +23,7 @@ export async function main(ns) {
     // Will automatically hacks determined server after calculation
     // ns.run/exec can only take in string, integer or boolean as arguments
     //await serverCal(ns, scannedServersFiltered);
-    ns.run("/build/util/serverCal.js", 1);
+    await ns.run("/build/util/serverCal.js", 1);
 
     // Loop will be killed after sleep - Check on reason
     while (portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) {
@@ -36,7 +36,7 @@ export async function main(ns) {
             ns.tprint("Upgrading personal server");
             await ns.run("/build/pserver/upgradePServer.js", 1)
             //await serverCal(ns, scannedServersFiltered)
-            ns.run("build/util/serverCal.js", 1)
+            await ns.run("build/util/serverCal.js", 1)
         }
 
         // Attempt to upgrade server to hack
@@ -52,10 +52,13 @@ export async function main(ns) {
             }
         }
 
+        // Attempt to buy/upgrade hacknet nodes
         if (numExistNodes != 30) {
+            ns.tprint("Buying hacknet node")
             ns.run("/build/hacknet/purchaseHacknet.js", 1);
             numExistNodes = ns.hacknet.numNodes();
         } else {
+            ns.tprint("Upgrading hacknet node")
             ns.run("/build/hacknet/upgradeHacknet.js", 1);
         }
 
