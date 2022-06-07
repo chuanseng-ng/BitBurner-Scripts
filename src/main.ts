@@ -6,6 +6,7 @@ import { purchaseServer } from "./pserver/purchasePServer";
 /** @param {NS ns} **/
 export async function main(ns) {
     let portHackLvl = 0;
+    let oldPortHackLvl = 0;
     let serverCount = ns.getPurchasedServers().length;
 
     // Call scan function to dump all available servers in game
@@ -35,15 +36,19 @@ export async function main(ns) {
             ns.run("build/util/serverCal.js", 1)
         }
 
-        await ns.sleep(3000)
+        await ns.sleep(30000)
 
         // Attempt to upgrade server to hack
         if (portHackLvl != 5) {
             //await serverCal(ns, scannedServersFiltered);        
-            ns.run("build/util/serverCal.js", 1)
             portHackLvl = portHackLvlCal(ns);
+            
+            if (portHackLvl > oldPortHackLvl) {
+                ns.run("build/util/serverCal.js", 1)
+                oldPortHackLvl = portHackLvl;
+            }
         }
 
-        await ns.sleep(3000)
+        await ns.sleep(30000)
     }
 }
