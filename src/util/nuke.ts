@@ -21,17 +21,22 @@ export async function nukeChecker(ns, scannedServersFiltered) {
 }
 
 async function nuke(ns, serverName, serverPort, portHackLvl) {
-    ns.brutessh(serverName);
-    if (portHackLvl == 2) {
+    if (portHackLvl == 1) {
+        ns.brutessh(serverName);
+    } else if (portHackLvl == 2) {
+        ns.brutessh(serverName);
         ns.ftpcrack(serverName);
     } else if (portHackLvl == 3) {
+        ns.brutessh(serverName);
         ns.ftpcrack(serverName);
         ns.relaysmtp(serverName);
     } else if (portHackLvl == 4) {
+        ns.brutessh(serverName);
         ns.ftpcrack(serverName);
         ns.relaysmtp(serverName);
         ns.httpworm(serverName);
     } else if (portHackLvl == 5) {
+        ns.brutessh(serverName);
         ns.ftpcrack(serverName);
         ns.relaysmtp(serverName);
         ns.httpworm(serverName);
