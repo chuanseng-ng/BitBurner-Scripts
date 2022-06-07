@@ -1,9 +1,0 @@
-{
-    "javascript.preferences.importModuleSpecifier": "non-relative",
-    "files.exclude": {
-        "jsconfig.json": true,
-        "index.d.ts": true,
-    },
-
-    "typescript.npm": "C:\\Program Files\\nodejs\\npm.cmd"
-}
