@@ -21,7 +21,7 @@ graph TD;
     G --> |Add new servers to filtered server list| H[Upgrade all 25 servers to highest possible tier based on player's cash]
     H --> F
     F ==> |Subsequent loops for server upgrade| H
-    F --> |Not-yet-implemented| I[Buy 1st hacknet node]
+    F --> I[Buy 1st hacknet node]
     I --> J[Buy more hacknet node]
     I --> K[Upgrade existing nodes]
     J --> K
