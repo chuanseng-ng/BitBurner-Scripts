@@ -45,6 +45,7 @@ export async function main(ns) {
 
   if (numExistNodes == maxNode && canUpgradeCore.length == 0 && canUpgradeLevel.length == 0 && canUpgradeRam.length == 0) {
     ns.tprint('All hacknet nodes are fully upgraded');
+    ns.tprint('');
     return;
   }
 }

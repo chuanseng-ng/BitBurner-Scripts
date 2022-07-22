@@ -33,9 +33,11 @@ export async function main(ns) {
     // Then attempt to upgrade pservers to max RAM
     if (serverCount != 25) {
       ns.tprint('Purchasing personal server');
+      ns.tprint('');
       [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered);
     } else {
       ns.tprint('Upgrading personal server');
+      ns.tprint('');
       // await ns.run('/build/pserver/upgradePServer.js', 1);
       await resourceMan.memAnalyze(ns, '/build/pserver/upgradePServer.js')
       // await serverCal(ns, scannedServersFiltered)
@@ -48,11 +50,13 @@ export async function main(ns) {
     // Attempt to upgrade server to hack
     if (portHackLvl != 5) {
       ns.tprint('Checking current portHackLvl');
+      ns.tprint('');
       // await serverCal(ns, scannedServersFiltered);
       portHackLvl = portHackLvlCal(ns);
 
       if (portHackLvl > oldPortHackLvl) {
         ns.tprint('portHackLvl upgraded');
+        ns.tprint('');
         await ns.run('/build/util/serverCal.js', 1);
         oldPortHackLvl = portHackLvl;
       }
@@ -64,11 +68,13 @@ export async function main(ns) {
     // Attempt to buy/upgrade hacknet nodes
     if (numExistNodes != 30) {
       ns.tprint('Buying hacknet node');
+      ns.tprint('');
       // ns.run('/build/hacknet/purchaseHacknet.js', 1);
       await resourceMan.memAnalyze(ns, '/build/hacknet/purchaseHacknet.js')
       numExistNodes = ns.hacknet.numNodes();
     } else {
       ns.tprint('Upgrading hacknet node');
+      ns.tprint('');
       // ns.run('/build/hacknet/upgradeHacknet.js', 1);
       await resourceMan.memAnalyze(ns, '/build/hacknet/upgradeHacknet.js')
     }

@@ -11,6 +11,7 @@ export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
     const hostNameServer = {hostname: hostName, ramsize: ns.getServerMaxRam(hostName)};
     ns.tprint('Purchased personal server: ' + hostName);
     ns.tprint('Verify server purchased: ' + hostNameServer.hostname);
+    ns.tprint('');
 
     scannedServersFiltered.push(hostNameServer);
     serverCount += 1;
