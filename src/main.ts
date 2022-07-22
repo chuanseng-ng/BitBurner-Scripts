@@ -1,8 +1,10 @@
 // Script in-game ram requirement -> 13.55GB
 // import { serverCal } from "./util/serverCal";
 import * as scan from './util/scan';
+import * as resourceMan from './util/resourceMan';
 import {portHackLvlCal} from './util/portHackLvl';
 import {purchaseServer} from './pserver/purchasePServer';
+
 
 /** @param {NS ns} **/
 export async function main(ns) {
@@ -26,7 +28,6 @@ export async function main(ns) {
   // await serverCal(ns, scannedServersFiltered);
   await ns.run('/build/util/serverCal.js', 1);
 
-  // Loop will be killed after sleep - Check on reason
   while (portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) {
     // Attempt to buy maximum number of pservers
     // Then attempt to upgrade pservers to max RAM
@@ -35,9 +36,10 @@ export async function main(ns) {
       [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered);
     } else {
       ns.tprint('Upgrading personal server');
-      await ns.run('/build/pserver/upgradePServer.js', 1);
+      // await ns.run('/build/pserver/upgradePServer.js', 1);
+      await resourceMan.memAnalyze(ns, '/build/pserver/upgradePServer.js')
       // await serverCal(ns, scannedServersFiltered)
-      await ns.run('build/util/serverCal.js', 1);
+      await ns.run('/build/util/serverCal.js', 1);
     }
 
     // Sleep to let previous scripts deallocate memory
@@ -51,7 +53,7 @@ export async function main(ns) {
 
       if (portHackLvl > oldPortHackLvl) {
         ns.tprint('portHackLvl upgraded');
-        ns.run('build/util/serverCal.js', 1);
+        await ns.run('/build/util/serverCal.js', 1);
         oldPortHackLvl = portHackLvl;
       }
     }
@@ -62,11 +64,13 @@ export async function main(ns) {
     // Attempt to buy/upgrade hacknet nodes
     if (numExistNodes != 30) {
       ns.tprint('Buying hacknet node');
-      ns.run('/build/hacknet/purchaseHacknet.js', 1);
+      // ns.run('/build/hacknet/purchaseHacknet.js', 1);
+      await resourceMan.memAnalyze(ns, '/build/hacknet/purchaseHacknet.js')
       numExistNodes = ns.hacknet.numNodes();
     } else {
       ns.tprint('Upgrading hacknet node');
-      ns.run('/build/hacknet/upgradeHacknet.js', 1);
+      // ns.run('/build/hacknet/upgradeHacknet.js', 1);
+      await resourceMan.memAnalyze(ns, '/build/hacknet/upgradeHacknet.js')
     }
 
     // Sleep to slow down loop and let while loop work
