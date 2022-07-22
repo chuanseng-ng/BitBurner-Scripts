@@ -11,9 +11,6 @@
 [ ] - Attempt file database (Using port writing)
 [ ] - Implement class object in scripts
 
-## Status Breakdown -
-[v] - Fix serverCal.js dynamic import issue (Maybe can skip)
-
 ## Release History -
 |-- V3.0 (20220722)
 |   `-- Merge branch (feature-add-resource-manager)
