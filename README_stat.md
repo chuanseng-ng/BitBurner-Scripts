@@ -15,6 +15,9 @@
 [v] - Fix serverCal.js dynamic import issue (Maybe can skip)
 
 ## Release History -
+|-- V3.0 (20220722)
+|   `-- Merge branch (feature-add-resource-manager)
+|
 |-- V2.2 (20220607)
 |   |-- Merge branch (feature-add-hacknet-node)
 |   `-- Fix issues in code
