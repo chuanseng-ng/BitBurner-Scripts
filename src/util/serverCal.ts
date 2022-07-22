@@ -42,7 +42,7 @@ export async function main(ns) {
 }
 
 async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex) {
-  const homeram = ns.getServerMaxRam('home');
+  const freeHomeRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
 
   // Kills all running scripts in all available servers
   for (let i = 0; i < scannedServersFiltered.length; i++) {
@@ -60,7 +60,7 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
     }
   }
 
-  const homeThread = Math.floor(homeram - 48)/2.4;
+  const homeThread = Math.floor(freeHomeRam)/2.4;
   if (homeThread > 0) {
     ns.run('/build/exec/hack.js', homeThread, highestLvlServer[optimalServerIndex].hostname);
   }
