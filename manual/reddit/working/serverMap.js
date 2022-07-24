@@ -1,3 +1,4 @@
+let serverNetworkFile = "./server_map.txt"
 let doc = eval("document"),
     f = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", "w0r1d_d43m0n"],
     css = `<style id="scanCSS">
@@ -27,6 +28,7 @@ export let main = ns => {
             return `<a class="s${f.includes(x) ? " f" : ""}${ns.hasRootAccess(x) ? " r" : ""}">${x}</a>` +
                 ` <span class="hack ${(reqHack <= myHack ? 'green' : 'red')}">(${reqHack})</span>`;
         };
+
     let tcommand = x => {
         tIn.value = x;
         tEv.onChange({ target: tIn });
@@ -42,6 +44,7 @@ export let main = ns => {
         }
         return o;
     };
+    
     for (let i = 0, j; i < s.length; i++)
         for (j of ns.scan(s[i]))
             if (!s.includes(j)) s.push(j), p.push(s[i]), r[j] = r[s[i]] + ";connect " + j;
