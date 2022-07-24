@@ -15,6 +15,9 @@
 [ ] - Implement staggered hacking between different servers
 
 ## Release History -
+|-- V3.1 (20220724)
+|   `-- Fix personal and other servers missing from servers to be used list
+|
 |-- V3.0 (20220722)
 |   `-- Merge branch (feature-add-resource-manager)
 |
