@@ -11,6 +11,7 @@
 [x] - Implement resource manager (RAM)
 [ ] - Attempt file database (Using port writing)
 [ ] - Implement class object in scripts
+[ ] - Implement staggered hacking between different servers
 
 ## Release History -
 |-- V3.0 (20220722)
