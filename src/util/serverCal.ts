@@ -9,6 +9,8 @@ export async function main(ns) {
   let optimalServerIndex = 0;
   const optimalServerMoney = 0;
   let pushDone = 0;
+  let killHackPID = 0;
+  let killHackArg = "";
   const playerHackLvl = ns.getPlayer().hacking;
   const highestLvlServer: any [] = [];
   // var scannedServers: any [] = [];
@@ -38,10 +40,20 @@ export async function main(ns) {
     }
   }
 
-  await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex);
+  let homeProcess = ns.ps('home');
+  for (let i = 0; i < homeProcess.length; i++) {
+    if (homeProcess[i].filename == '/build/exec/hack.js') {
+      killHackPID = homeProcess[i].pid;
+      killHackArg = homeProcess[i].args;
+    }
+  }
+
+  if (killHackArg != highestLvlServer[optimalServerIndex].hostname) {
+    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, killHackPID);
+  }
 }
 
-async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex) {
+async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, killHackPID) {
   const freeHomeRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
 
   // Kills all running scripts in all available servers
@@ -51,7 +63,7 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
     }
   }
 
-  ns.kill('/build/exec/hack.js', 'home');
+  ns.kill(killHackPID);
 
   for (let i = 0; i < scannedServersFiltered.length; i++) {
     await ns.scp('/build/exec/hack.js', scannedServersFiltered[i].hostname);
@@ -60,7 +72,7 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
     }
   }
 
-  const homeThread = Math.floor(freeHomeRam)/2.4;
+  const homeThread = Math.floor(freeHomeRam/2.4);
   if (homeThread > 0) {
     ns.run('/build/exec/hack.js', homeThread, highestLvlServer[optimalServerIndex].hostname);
   }

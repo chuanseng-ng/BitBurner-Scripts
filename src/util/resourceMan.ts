@@ -3,14 +3,27 @@ export async function memAnalyze(ns, activeScript) {
     let homeFreeRam     = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
     let scriptMemSize   = ns.getScriptRam(activeScript);
     if (scriptMemSize > homeFreeRam) {
-        ns.kill('/build/exec/hack.js', 'home');
-        await ns.run(activeScript, 1);
+        let homeProcess = ns.ps('home');
+        for (let i = 0; i < homeProcess.length; i++) {
+            if (homeProcess[i].filename == '/build/exec/hack.js') {
+                let killHackPID = homeProcess[i].pid;
+                let killHackArg = homeProcess[i].args;
 
-        let homeRemainRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
+                if (activeScript == '/build/util/serverCal.js') {
+                    ns.kill(killHackPID);
+                    await ns.run(activeScript, 1);
+                } else {
+                    ns.kill(killHackPID);
+                    await ns.run(activeScript, 1);
 
-        const homeThread = Math.floor(homeRemainRam)/2.4;
-        if (homeThread > 0) {
-            ns.run('/build/exec/hack.js', homeThread, 'home');
+                    let homeRemainRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
+
+                    const homeThread = Math.floor(homeRemainRam/2.4)
+                    if (homeThread > 0) {
+                        ns.run('/build/exec/hack.js', homeThread, killHackArg[0])
+                    }
+                }
+            }
         }
     }
 }
