@@ -7,6 +7,7 @@
 
 ## Progress - 
 [v] - Fix all errors occurring from current code
+[x] - Fix vscode extension not pushing code to game - (Might be due to Win11)
 [x] - Implement resource manager (RAM)
 [ ] - Attempt file database (Using port writing)
 [ ] - Implement class object in scripts
