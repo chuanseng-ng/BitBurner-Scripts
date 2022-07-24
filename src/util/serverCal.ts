@@ -49,11 +49,11 @@ export async function main(ns) {
   }
 
   if (killHackArg != highestLvlServer[optimalServerIndex].hostname) {
-    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, killHackPID);
+    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackPID);
   }
 }
 
-async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, killHackPID) {
+async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackPID) {
   const freeHomeRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
 
   // Kills all running scripts in all available servers
@@ -67,7 +67,7 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
 
   for (let i = 0; i < scannedServersFiltered.length; i++) {
     await ns.scp('/build/exec/hack.js', scannedServersFiltered[i].hostname);
-    if (portHackLvlCal >= scannedServersFiltered[i].numports) {
+    if (portHackLvl >= scannedServersFiltered[i].numports) {
       ns.exec('/build/exec/hack.js', scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname);
     }
   }
