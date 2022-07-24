@@ -11,6 +11,7 @@
 [x] - Implement resource manager (RAM)
 [ ] - Attempt file database (Using port writing)
 [ ] - Implement class object in scripts
+[ ] - Draw out map of server connection
 [ ] - Implement staggered hacking between different servers
 
 ## Release History -
