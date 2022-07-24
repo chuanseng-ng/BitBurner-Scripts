@@ -11,10 +11,13 @@
 [x] - Implement resource manager (RAM)
 [ ] - Attempt file database (Using port writing)
 [ ] - Implement class object in scripts
-[ ] - Draw out map of server connection
+[x] - Draw out map of server connection
 [ ] - Implement staggered hacking between different servers
 
 ## Release History -
+|-- V3.2 (20220724)
+|   `-- Add server network map to repo
+|
 |-- V3.1 (20220724)
 |   `-- Fix personal and other servers missing from servers to be used list
 |
