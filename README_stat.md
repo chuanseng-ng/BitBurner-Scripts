@@ -9,9 +9,10 @@
 [v] - Fix all errors occurring from current code
 [x] - Fix vscode extension not pushing code to game - (Might be due to Win11)
 [x] - Implement resource manager (RAM)
+[x] - Draw out map of server connection
+[ ] - Assess feasibility of using node.js env to communicate with game
 [ ] - Attempt file database (Using port writing)
 [ ] - Implement class object in scripts
-[x] - Draw out map of server connection
 [ ] - Implement staggered hacking between different servers
 
 ## Release History -
