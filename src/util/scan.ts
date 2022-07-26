@@ -28,7 +28,7 @@ export async function scanServer(ns) {
 
       // scannedServers.push(server);
 
-      if (server.ramsize >= 8) {
+      if (server.ramsize >= 8 && !server.hostname.includes('home')) {
         scannedServersFiltered.push(server);
         // await ns.write("filter_list.txt", server.hostname, "a")
         // await ns.write("filter_list.txt", "\n", "a")
