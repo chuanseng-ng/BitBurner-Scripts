@@ -55,6 +55,8 @@ export async function main(ns) {
         ns.tprint('portHackLvl upgraded');
         await ns.run('/build/util/serverCal.js', 1);
         oldPortHackLvl = portHackLvl;
+      } else {
+        ns.tprint('Current portHackLvl: ', oldPortHackLvl)
       }
     }
 
