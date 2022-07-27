@@ -1,5 +1,5 @@
 /** @param {NS ns} **/
-export async function main(ns) {
+export function main(ns) {
   const numExistNodes = ns.hacknet.numNodes();
   const maxCore = 16;
   const maxLevel = 200;
