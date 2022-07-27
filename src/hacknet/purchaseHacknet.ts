@@ -1,3 +1,5 @@
+import * as resourceMan from '../util/resourceMan'
+
 /** @param {NS ns} **/
 export async function main(ns) {
   const playerMoney = ns.getPlayer().money;
@@ -10,7 +12,8 @@ export async function main(ns) {
   } else {
     ns.tprint('Skip purchase and going to upgrade');
     ns.tprint('');
-    await ns.run('/build/hacknet/upgradeHacknet.js', 1);
+    // ns.run('/build/hacknet/upgradeHacknet.js', 1);
+    await resourceMan.memAnalyze(ns, '/build/hacknet/upgradeHacknet.js')
   }
 
   return;
