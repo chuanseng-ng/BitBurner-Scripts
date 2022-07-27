@@ -66,12 +66,12 @@ export async function main(ns) {
     // Attempt to buy/upgrade hacknet nodes
     if (numExistNodes != 30) {
       ns.tprint('Buying hacknet node');
-      ns.run('/build/hacknet/purchaseHacknet.js', 1);
+      await ns.run('/build/hacknet/purchaseHacknet.js', 1);
       // await resourceMan.memAnalyze(ns, '/build/hacknet/purchaseHacknet.js')
       numExistNodes = ns.hacknet.numNodes();
     } else {
       ns.tprint('Upgrading hacknet node');
-      ns.run('/build/hacknet/upgradeHacknet.js', 1);
+      await ns.run('/build/hacknet/upgradeHacknet.js', 1);
       // await resourceMan.memAnalyze(ns, '/build/hacknet/upgradeHacknet.js')
     }
 
