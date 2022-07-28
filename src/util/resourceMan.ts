@@ -6,14 +6,15 @@ export function memAnalyze(ns, activeScript) {
         let homeProcess = ns.ps('home');
         for (let i = 0; i < homeProcess.length; i++) {
             if (homeProcess[i].filename == '/build/exec/hack.js') {
-                let killHackPID = homeProcess[i].pid;
+                // let killHackPID = homeProcess[i].pid;
+                let killHackScript = homeProcess[i].filename;
                 let killHackArg = homeProcess[i].args;
 
                 if (activeScript == '/build/util/serverCal.js') {
-                    ns.kill(killHackPID);
+                    ns.kill(killHackScript, 'home', killHackArg[0]);
                     ns.run(activeScript, 1);
                 } else {
-                    ns.kill(killHackPID);
+                    ns.kill(killHackScript, 'home', killHackArg[0]);
                     ns.run(activeScript, 1);
 
                     let homeRemainRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
