@@ -11,6 +11,7 @@ export async function main(ns) {
   let portHackLvl = 0;
   let oldPortHackLvl = 0;
   let numExistNodes = 0;
+  let end_script = 0;
   let serverCount = ns.getPurchasedServers().length;
 
   // Call scan function to dump all available servers in game
@@ -28,7 +29,7 @@ export async function main(ns) {
   // await serverCal(ns, scannedServersFiltered);
   await ns.run('/build/util/serverCal.js', 1);
 
-  while (portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) {
+  while ((portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) && end_script!= 1) {
     // Attempt to buy maximum number of pservers
     // Then attempt to upgrade pservers to max RAM
     if (serverCount != 25) {
