@@ -12,6 +12,7 @@ export async function main(ns) {
   let oldPortHackLvl = 0;
   let numExistNodes = 0;
   let end_script = 0;
+  let killHackPID = 0;
   let serverCount = ns.getPurchasedServers().length;
 
   // Call scan function to dump all available servers in game
@@ -19,9 +20,16 @@ export async function main(ns) {
   let scannedServersFiltered = await scan.scanServer(ns);
 
   // Kills all running scripts in all available servers
-  for (let i = 0; i < scannedServersFiltered.length; i++) {
-    ns.killall(scannedServersFiltered[i].hostname);
+  // for (let i = 0; i < scannedServersFiltered.length; i++) {
+  //   ns.killall(scannedServersFiltered[i].hostname);
+  // }
+  let homeProcess = ns.ps('home');
+  for (let i = 0; i < homeProcess.length; i++){
+    if (homeProcess[i].filename == '/build/exec/hack.js'){
+      killHackPID = homeProcess[i].pid;
+    }
   }
+  ns.kill(killHackPID);
 
   // Calculates optimal server to hack based on max money
   // Will automatically hacks determined server after calculation
