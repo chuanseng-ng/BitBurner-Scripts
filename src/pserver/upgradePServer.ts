@@ -5,6 +5,7 @@
 export async function main(ns) {
   let poorChecker = 0;
   let startRamSize = 8;
+  let killHackArg = "";
   const pserverMaxRam = ns.getPurchasedServerMaxRam();
   const playerMoney = ns.getPlayer().money;
   const existingServers = ns.getPurchasedServers();
@@ -41,6 +42,18 @@ export async function main(ns) {
           ns.deleteServer(existingServers[i]);
         }
         ns.purchaseServer(existingServers[i], startRamSize);
+
+        ns.killall(existingServers[i]);
+
+        let homeProcess = ns.ps('home');
+        for (let i = 0; i < homeProcess.length; i++) {
+          if (homeProcess[i].filename == '/build/exec/hack.js') {
+            killHackArg = homeProcess[i].args;
+          }
+        }
+
+        await ns.scp('/build/exec/hack.js', existingServers[i]);
+        ns.exec('/build/exec/hack.js', existingServers[i], Math.floor(ns.getServerMaxRam(existingServers[i])/2.4), killHackArg[0])
 
         // await serverCal(ns, scannedServersFiltered)
       }

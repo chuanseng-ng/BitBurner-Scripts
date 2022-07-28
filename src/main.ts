@@ -40,7 +40,7 @@ export async function main(ns) {
       // await ns.run('/build/pserver/upgradePServer.js', 1);
       resourceMan.memAnalyze(ns, '/build/pserver/upgradePServer.js')
       // await serverCal(ns, scannedServersFiltered)
-      await ns.run('/build/util/serverCal.js', 1);
+      // await ns.run('/build/util/serverCal.js', 1);
     }
 
     // Sleep to let previous scripts deallocate memory
