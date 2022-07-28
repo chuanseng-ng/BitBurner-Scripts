@@ -37,7 +37,7 @@ export async function main(ns) {
     } else {
       ns.tprint('Upgrading personal server');
       // await ns.run('/build/pserver/upgradePServer.js', 1);
-      await resourceMan.memAnalyze(ns, '/build/pserver/upgradePServer.js')
+      resourceMan.memAnalyze(ns, '/build/pserver/upgradePServer.js')
       // await serverCal(ns, scannedServersFiltered)
       await ns.run('/build/util/serverCal.js', 1);
     }

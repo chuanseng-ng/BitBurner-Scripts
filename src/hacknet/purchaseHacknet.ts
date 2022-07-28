@@ -13,7 +13,7 @@ export async function main(ns) {
     ns.tprint('Skip purchase and going to upgrade');
     ns.tprint('');
     // ns.run('/build/hacknet/upgradeHacknet.js', 1);
-    await resourceMan.memAnalyze(ns, '/build/hacknet/upgradeHacknet.js')
+    resourceMan.memAnalyze(ns, '/build/hacknet/upgradeHacknet.js')
   }
 
   return;
