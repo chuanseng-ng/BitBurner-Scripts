@@ -1,7 +1,7 @@
 /** @param {NS ns} **/
-export async function memAnalyze(ns, activeScript) {
-    let homeFreeRam     = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
-    let scriptMemSize   = ns.getScriptRam(activeScript);
+export function memAnalyze(ns, activeScript) {
+    let homeFreeRam         = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
+    let scriptMemSize       = ns.getScriptRam(activeScript);
     if (scriptMemSize > homeFreeRam) {
         let homeProcess = ns.ps('home');
         for (let i = 0; i < homeProcess.length; i++) {
@@ -11,10 +11,10 @@ export async function memAnalyze(ns, activeScript) {
 
                 if (activeScript == '/build/util/serverCal.js') {
                     ns.kill(killHackPID);
-                    await ns.run(activeScript, 1);
+                    ns.run(activeScript, 1);
                 } else {
                     ns.kill(killHackPID);
-                    await ns.run(activeScript, 1);
+                    ns.run(activeScript, 1);
 
                     let homeRemainRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
 
@@ -25,5 +25,8 @@ export async function memAnalyze(ns, activeScript) {
                 }
             }
         }
+    }
+    else {
+        ns.run(activeScript, 1)
     }
 }
