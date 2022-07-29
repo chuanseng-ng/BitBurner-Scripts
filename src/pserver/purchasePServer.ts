@@ -33,6 +33,8 @@ export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
     } else {
       resourceMan.memAnalyze(ns, '/build/util/serverCal.js');      
     }
+  } else {
+    ns.tprint("Not enough money at the moment");
   }
 
   // await ns.sleep(3000)
