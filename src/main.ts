@@ -40,7 +40,7 @@ export async function main(ns) {
   while ((portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) && end_script!= 1) {
     // Attempt to buy maximum number of pservers
     // Then attempt to upgrade pservers to max RAM
-    if (serverCount != 25 && ns.getPlayer().money > ns.getPurchasedServerCost(8)) {
+    if (serverCount < 25 && ns.getPlayer().money > ns.getPurchasedServerCost(8)) {
       ns.tprint('Purchasing personal server');
       // [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered);
       resourceMan.memAnalyze(ns, '/build/pserver/purchasePServer.js');
