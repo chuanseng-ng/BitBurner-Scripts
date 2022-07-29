@@ -3,7 +3,7 @@
 import * as scan from './util/scan';
 import * as resourceMan from './util/resourceMan';
 import {portHackLvlCal} from './util/portHackLvl';
-import {purchaseServer} from './pserver/purchasePServer';
+// import {purchaseServer} from './pserver/purchasePServer';
 
 
 /** @param {NS ns} **/
@@ -40,15 +40,19 @@ export async function main(ns) {
   while ((portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) && end_script!= 1) {
     // Attempt to buy maximum number of pservers
     // Then attempt to upgrade pservers to max RAM
-    if (serverCount != 25) {
+    if (serverCount != 25 && ns.getPlayer().money > ns.getPurchasedServerCost(8)) {
       ns.tprint('Purchasing personal server');
-      [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered);
-    } else {
+      // [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered);
+      resourceMan.memAnalyze(ns, '/build/pserver/purchasePServer.js');
+      serverCount = ns.getPurchasedServers().length;
+    } else if (serverCount == 25) {
       ns.tprint('Upgrading personal server');
       // await ns.run('/build/pserver/upgradePServer.js', 1);
-      resourceMan.memAnalyze(ns, '/build/pserver/upgradePServer.js')
+      resourceMan.memAnalyze(ns, '/build/pserver/upgradePServer.js');
       // await serverCal(ns, scannedServersFiltered)
       // await ns.run('/build/util/serverCal.js', 1);
+    } else {
+      ns.tprint("Not enough money for personal servers at the moment");
     }
 
     // Sleep to let previous scripts deallocate memory
