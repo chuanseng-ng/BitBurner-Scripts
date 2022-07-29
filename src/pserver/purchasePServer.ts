@@ -2,9 +2,11 @@
 import * as resourceMan from '../util/resourceMan'
 
 /** @param {NS ns} **/
-export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
+//export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
+export async function main (ns) {
   const defaultRamSize = 8;
   let killHackArg = "";
+  let serverCount = ns.getPurchasedServers().length;
 
   // while (serverCount < ns.getPurchasedServerLimit()) {
   if (ns.getPlayer().money > ns.getPurchasedServerCost(defaultRamSize)) {
@@ -15,8 +17,8 @@ export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
     ns.tprint('Verify server purchased: ' + hostNameServer.hostname);
     ns.tprint('');
 
-    scannedServersFiltered.push(hostNameServer);
-    serverCount += 1;
+    // scannedServersFiltered.push(hostNameServer);
+    // serverCount += 1;
     // await serverCal(ns, scannedServersFiltered)
     // await ns.run('/build/util/serverCal.js', 1);
     // resourceMan.memAnalyze(ns, '/build/util/serverCal.js');
@@ -40,5 +42,5 @@ export async function purchaseServer(ns, serverCount, scannedServersFiltered) {
   // await ns.sleep(3000)
   // }
 
-  return [serverCount, scannedServersFiltered];
+  // return [serverCount, scannedServersFiltered];
 }
