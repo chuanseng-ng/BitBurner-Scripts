@@ -9,7 +9,7 @@ export async function main (ns) {
   let serverCount = ns.getPurchasedServers().length;
 
   // while (serverCount < ns.getPurchasedServerLimit()) {
-  if (ns.getPlayer().money > ns.getPurchasedServerCost(defaultRamSize)) {
+  if (serverCount < 25 && ns.getPlayer().money > ns.getPurchasedServerCost(defaultRamSize)) {
     const hostName = 'pserv-' + serverCount;
     ns.purchaseServer(hostName, defaultRamSize);
     const hostNameServer = {hostname: hostName, ramsize: ns.getServerMaxRam(hostName)};
