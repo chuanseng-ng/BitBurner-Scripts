@@ -10,6 +10,7 @@
 [x] - Fix vscode extension not pushing code to game - (Might be due to Win11)
 [x] - Implement resource manager (RAM)
 [x] - Draw out map of server connection
+[ ] - Check for formulas.exe and utilize built-in to maximize hacking
 [ ] - Assess feasibility of using node.js env to communicate with game
 [ ] - Attempt file database (Using port writing)
 [ ] - Implement class object in scripts
