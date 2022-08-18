@@ -50,8 +50,10 @@ export async function main(ns) {
     }
   }
 
-  if (killHackArg != highestLvlServer[optimalServerIndex].hostname) {
+  if (killHackArg != highestLvlServer[optimalServerIndex].hostname && killHackArg[0] in scannedServersFiltered) {
     await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, killHackArg[0]);
+  } else if (!(killHackArg[0] in scannedServersFiltered)) {
+    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, highestLvlServer[optimalServerIndex].hostname);
   }
 }
 
