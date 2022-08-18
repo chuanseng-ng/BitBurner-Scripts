@@ -12,7 +12,7 @@ export async function main(ns) {
   // let killHackPID = 0;
   let killHackArg = "";
   let killHackScript = "";
-  const playerHackLvl = ns.getPlayer().hacking;
+  const playerHackLvl = ns.getPlayer().skills.hacking;
   const highestLvlServer: any [] = [];
   // var scannedServers: any [] = [];
   let scannedServersFiltered: any [] = [];
@@ -50,8 +50,10 @@ export async function main(ns) {
     }
   }
 
-  if (killHackArg[0] != highestLvlServer[optimalServerIndex].hostname) {
+  if (killHackArg != highestLvlServer[optimalServerIndex].hostname && killHackArg[0] in scannedServersFiltered) {
     await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, killHackArg[0]);
+  } else if (!(killHackArg[0] in scannedServersFiltered)) {
+    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, highestLvlServer[optimalServerIndex].hostname);
   }
 }
 
