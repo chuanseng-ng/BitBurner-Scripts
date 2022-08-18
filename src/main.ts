@@ -37,6 +37,8 @@ export async function main(ns) {
   // await serverCal(ns, scannedServersFiltered);
   await ns.run('/build/util/serverCal.js', 1);
 
+  //TODO: Add formulas API to determine most lucrative hacking method in bitnode
+
   while ((portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) && end_script!= 1) {
     // Attempt to buy maximum number of pservers
     // Then attempt to upgrade pservers to max RAM
@@ -90,5 +92,7 @@ export async function main(ns) {
 
     // Sleep to slow down loop and let while loop work
     await ns.sleep(60000);
+
+    //TODO: Add if loop for gang API implementation
   }
 }
