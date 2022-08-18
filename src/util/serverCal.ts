@@ -12,7 +12,7 @@ export async function main(ns) {
   // let killHackPID = 0;
   let killHackArg = "";
   let killHackScript = "";
-  const playerHackLvl = ns.getPlayer().hacking;
+  const playerHackLvl = ns.getPlayer().skills.hacking;
   const highestLvlServer: any [] = [];
   // var scannedServers: any [] = [];
   let scannedServersFiltered: any [] = [];
