@@ -50,9 +50,9 @@ export async function main(ns) {
     }
   }
 
-  if (killHackArg != highestLvlServer[optimalServerIndex].hostname && killHackArg[0] in scannedServersFiltered) {
+  if (killHackArg[0] != highestLvlServer[optimalServerIndex].hostname && typeof killHackArg[0] !== 'undefined') {
     await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, killHackArg[0]);
-  } else if (!(killHackArg[0] in scannedServersFiltered)) {
+  } else if (typeof killHackArg[0] === 'undefined') {
     await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, highestLvlServer[optimalServerIndex].hostname);
   }
 }
