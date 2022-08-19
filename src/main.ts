@@ -98,7 +98,7 @@ export async function main(ns) {
       // await resourceMan.memAnalyze(ns, '/build/hacknet/upgradeHacknet.js')
     }
 
-    // Sleep to slow down loop and let while loop work
+    // Sleep to slow down loop
     await ns.sleep(60000);
 
     //TODO: Add if loop for gang API implementation
@@ -108,7 +108,7 @@ export async function main(ns) {
       gangCreation = true;
     } else {
       // Recruit new members till unable
-      while (ns.gang.canRecuitMember() == true) {
+      while (ns.gang.canRecruitMember() == true) {
         ns.tprint('Recruiting member');
         let gangMemberName = "memName-" + numGangMember;
         numGangMember += 1;
@@ -118,6 +118,7 @@ export async function main(ns) {
       // let gangTaskList = ["Ransomware", "Phishing", "Identity Theft", "DDoS Attacks", "Fraud & Counterfeiting", "Money Laundering",
       //   "Cyberterrorism", "Ethical Hacking", "Vigilante Justice", "Train Combat", "Train Hacking", "Train Charisma", "Territory Warfare"];
       // Set members' tasks and upgrade if able
+      //TODO: Add getEquipment and getAscension details to script
       if (gangType == "Hacking") {
         ns.tprint('Current gang type = Hacking');
         for (let i = 0; i < gangMemberList.length; i++) {
@@ -138,5 +139,8 @@ export async function main(ns) {
         }
       }
     }
+
+    // Sleep again to slow down loop
+    await ns.sleep(60000);
   }
 }
