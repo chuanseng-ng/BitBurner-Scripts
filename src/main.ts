@@ -68,7 +68,8 @@ export async function main(ns) {
 
       if (portHackLvl > oldPortHackLvl) {
         ns.tprint('portHackLvl upgraded');
-        await ns.run('/build/util/serverCal.js', 1);
+        // await ns.run('/build/util/serverCal.js', 1);
+        resourceMan.memAnalyze(ns, '/build/util/serverCal.js');
         oldPortHackLvl = portHackLvl;
       } else {
         ns.tprint('Current portHackLvl: ', oldPortHackLvl)
