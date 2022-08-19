@@ -11,13 +11,17 @@ export async function main(ns) {
   let portHackLvl = 0;
   let oldPortHackLvl = 0;
   let numExistNodes = 0;
+  let gangCreation = 0;
   let end_script = 0;
   let killHackPID = 0;
+
+  // gangFactionList = ["Slum Snakes", "Tetrads", "The Syndicate", "The Dark Army", "Speakers for the Dead", "NiteSec", "The Black Hand"];
+  let gangFaction = "NiteSec";
   let serverCount = ns.getPurchasedServers().length;
 
   // Call scan function to dump all available servers in game
   // var[scannedServers, scannedServersFiltered] = await scanServer(ns);
-  let scannedServersFiltered = await scan.scanServer(ns);
+  // let scannedServersFiltered = await scan.scanServer(ns);
 
   // Kills all running scripts in all available servers
   // for (let i = 0; i < scannedServersFiltered.length; i++) {
@@ -95,5 +99,10 @@ export async function main(ns) {
     await ns.sleep(60000);
 
     //TODO: Add if loop for gang API implementation
+    if (gangCreation == 0) {
+      ns.tprint('Creating gang');
+      
+      gangCreation = 1;
+    }
   }
 }
