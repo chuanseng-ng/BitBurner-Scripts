@@ -103,8 +103,9 @@ export async function main(ns) {
       ns.gang.createGang(gangFaction);
       gangCreation = true;
     } else {
+      ns.tprint("Gang exists, will go to gang management");
       // await ns.run('/build/gang/gangMan.ts, 1);
-      resourceMan.memAnalyze(ns, '/build/gang/gangMan.ts');
+      resourceMan.memAnalyze(ns, '/build/gang/gangMan.js');
     }
 
     // Sleep again to slow down loop
