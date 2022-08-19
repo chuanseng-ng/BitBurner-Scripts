@@ -50,14 +50,14 @@ export async function main(ns) {
     }
   }
 
-  if (killHackArg != highestLvlServer[optimalServerIndex].hostname && killHackArg[0] in scannedServersFiltered) {
-    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, killHackArg[0]);
-  } else if (!(killHackArg[0] in scannedServersFiltered)) {
-    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, highestLvlServer[optimalServerIndex].hostname);
+  if (killHackArg[0] != highestLvlServer[optimalServerIndex].hostname && typeof killHackArg[0] !== 'undefined') {
+    await serverExec(ns, scannedServersFiltered, portHackLvl, killHackScript, killHackArg[0]);
+  } else if (typeof killHackArg[0] === 'undefined') {
+    await serverExec(ns, scannedServersFiltered, portHackLvl, killHackScript, highestLvlServer[optimalServerIndex].hostname);
   }
 }
 
-async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, killHackArg) {
+async function serverExec(ns, scannedServersFiltered, portHackLvl, killHackScript, killHackArg) {
   const freeHomeRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
 
   // Kills all running scripts in all available servers
@@ -72,12 +72,12 @@ async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalS
   for (let i = 0; i < scannedServersFiltered.length; i++) {
     await ns.scp('/build/exec/hack.js', scannedServersFiltered[i].hostname);
     if (portHackLvl >= scannedServersFiltered[i].numports || scannedServersFiltered[i].hostname.includes('pserv-')) {
-      ns.exec('/build/exec/hack.js', scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), highestLvlServer[optimalServerIndex].hostname);
+      ns.exec('/build/exec/hack.js', scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), killHackArg);
     }
   }
 
   const homeThread = Math.floor(freeHomeRam/2.4);
   if (homeThread > 0) {
-    ns.run('/build/exec/hack.js', homeThread, highestLvlServer[optimalServerIndex].hostname);
+    ns.run('/build/exec/hack.js', homeThread, killHackArg);
   }
 }

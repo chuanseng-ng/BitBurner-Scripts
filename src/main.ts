@@ -14,10 +14,17 @@ export async function main(ns) {
   let end_script = 0;
   let killHackPID = 0;
   let serverCount = ns.getPurchasedServers().length;
+  
+  let numGangMember = ns.gang.getMemberNames().length;
+  let gangCreation = ns.gang.inGang();
+  // gangFactionList = ["Slum Snakes", "Tetrads", "The Syndicate", "The Dark Army", "Speakers for the Dead", "NiteSec", "The Black Hand"];
+  let gangFaction = "NiteSec";
+  // gangTypeList = ["Hacking", "Combat", "Crime"];
+  let gangType = "Hacking"
 
   // Call scan function to dump all available servers in game
   // var[scannedServers, scannedServersFiltered] = await scanServer(ns);
-  let scannedServersFiltered = await scan.scanServer(ns);
+  // let scannedServersFiltered = await scan.scanServer(ns);
 
   // Kills all running scripts in all available servers
   // for (let i = 0; i < scannedServersFiltered.length; i++) {
@@ -68,7 +75,8 @@ export async function main(ns) {
 
       if (portHackLvl > oldPortHackLvl) {
         ns.tprint('portHackLvl upgraded');
-        await ns.run('/build/util/serverCal.js', 1);
+        // await ns.run('/build/util/serverCal.js', 1);
+        resourceMan.memAnalyze(ns, '/build/util/serverCal.js');
         oldPortHackLvl = portHackLvl;
       } else {
         ns.tprint('Current portHackLvl: ', oldPortHackLvl)
@@ -90,9 +98,49 @@ export async function main(ns) {
       // await resourceMan.memAnalyze(ns, '/build/hacknet/upgradeHacknet.js')
     }
 
-    // Sleep to slow down loop and let while loop work
+    // Sleep to slow down loop
     await ns.sleep(60000);
 
     //TODO: Add if loop for gang API implementation
+    if (gangCreation == false) {
+      ns.tprint('Creating gang');
+      ns.gang.createGang(gangFaction);
+      gangCreation = true;
+    } else {
+      // Recruit new members till unable
+      while (ns.gang.canRecruitMember() == true) {
+        ns.tprint('Recruiting member');
+        let gangMemberName = "memName-" + numGangMember;
+        numGangMember += 1;
+        ns.gang.recruitMember(gangMemberName);
+      }
+      let gangMemberList = ns.gang.getMemberNames();
+      // let gangTaskList = ["Ransomware", "Phishing", "Identity Theft", "DDoS Attacks", "Fraud & Counterfeiting", "Money Laundering",
+      //   "Cyberterrorism", "Ethical Hacking", "Vigilante Justice", "Train Combat", "Train Hacking", "Train Charisma", "Territory Warfare"];
+      // Set members' tasks and upgrade if able
+      //TODO: Add getEquipment and getAscension details to script
+      if (gangType == "Hacking") {
+        ns.tprint('Current gang type = Hacking');
+        for (let i = 0; i < gangMemberList.length; i++) {
+          let currMemberTask = ns.gang.getMemberInformation(gangMemberList[i]).task;
+          //TODO: Add variation to member tasks
+          if (typeof currMemberTask == "undefined" || currMemberTask == "Unassigned") {
+            ns.gang.setMemberTask(gangMemberList[i], "Fraud & Counterfeiting");
+          }
+        }
+      } else if (gangType == "Combat") {
+        ns.tprint('Current gang type = Combat');
+        for (let i = 0; i < gangMemberList.length; i++) {
+          let currMemberTask = ns.gang.getMemberInformation(gangMemberList[i]).task;
+          //TODO: Add variation to member tasks
+          if (typeof currMemberTask == "undefined" || currMemberTask == "Unassigned") {
+            ns.gang.setMemberTask(gangMemberList[i], "Train Combat");
+          }
+        }
+      }
+    }
+
+    // Sleep again to slow down loop
+    await ns.sleep(60000);
   }
 }
