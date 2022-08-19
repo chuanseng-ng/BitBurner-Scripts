@@ -51,13 +51,13 @@ export async function main(ns) {
   }
 
   if (killHackArg[0] != highestLvlServer[optimalServerIndex].hostname && typeof killHackArg[0] !== 'undefined') {
-    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, killHackArg[0]);
+    await serverExec(ns, scannedServersFiltered, portHackLvl, killHackScript, killHackArg[0]);
   } else if (typeof killHackArg[0] === 'undefined') {
-    await serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, highestLvlServer[optimalServerIndex].hostname);
+    await serverExec(ns, scannedServersFiltered, portHackLvl, killHackScript, highestLvlServer[optimalServerIndex].hostname);
   }
 }
 
-async function serverExec(ns, scannedServersFiltered, highestLvlServer, optimalServerIndex, portHackLvl, killHackScript, killHackArg) {
+async function serverExec(ns, scannedServersFiltered, portHackLvl, killHackScript, killHackArg) {
   const freeHomeRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
 
   // Kills all running scripts in all available servers
