@@ -13,14 +13,10 @@ export async function main(ns) {
   let numExistNodes = 0;
   let end_script = 0;
   let killHackPID = 0;
-  let serverCount = ns.getPurchasedServers().length;
-  
-  let numGangMember = ns.gang.getMemberNames().length;
+  let serverCount = ns.getPurchasedServers().length; 
   let gangCreation = ns.gang.inGang();
   // gangFactionList = ["Slum Snakes", "Tetrads", "The Syndicate", "The Dark Army", "Speakers for the Dead", "NiteSec", "The Black Hand"];
   let gangFaction = "NiteSec";
-  // gangTypeList = ["Hacking", "Combat", "Crime"];
-  let gangType = "Hacking"
 
   // Call scan function to dump all available servers in game
   // var[scannedServers, scannedServersFiltered] = await scanServer(ns);
@@ -107,37 +103,8 @@ export async function main(ns) {
       ns.gang.createGang(gangFaction);
       gangCreation = true;
     } else {
-      // Recruit new members till unable
-      while (ns.gang.canRecruitMember() == true) {
-        ns.tprint('Recruiting member');
-        let gangMemberName = "memName-" + numGangMember;
-        numGangMember += 1;
-        ns.gang.recruitMember(gangMemberName);
-      }
-      let gangMemberList = ns.gang.getMemberNames();
-      // let gangTaskList = ["Ransomware", "Phishing", "Identity Theft", "DDoS Attacks", "Fraud & Counterfeiting", "Money Laundering",
-      //   "Cyberterrorism", "Ethical Hacking", "Vigilante Justice", "Train Combat", "Train Hacking", "Train Charisma", "Territory Warfare"];
-      // Set members' tasks and upgrade if able
-      //TODO: Add getEquipment and getAscension details to script
-      if (gangType == "Hacking") {
-        ns.tprint('Current gang type = Hacking');
-        for (let i = 0; i < gangMemberList.length; i++) {
-          let currMemberTask = ns.gang.getMemberInformation(gangMemberList[i]).task;
-          //TODO: Add variation to member tasks
-          if (typeof currMemberTask == "undefined" || currMemberTask == "Unassigned") {
-            ns.gang.setMemberTask(gangMemberList[i], "Fraud & Counterfeiting");
-          }
-        }
-      } else if (gangType == "Combat") {
-        ns.tprint('Current gang type = Combat');
-        for (let i = 0; i < gangMemberList.length; i++) {
-          let currMemberTask = ns.gang.getMemberInformation(gangMemberList[i]).task;
-          //TODO: Add variation to member tasks
-          if (typeof currMemberTask == "undefined" || currMemberTask == "Unassigned") {
-            ns.gang.setMemberTask(gangMemberList[i], "Train Combat");
-          }
-        }
-      }
+      // await ns.run('/build/gang/gangMan.ts, 1);
+      resourceMan.memAnalyze(ns, '/build/gang/gangMan.ts');
     }
 
     // Sleep again to slow down loop
