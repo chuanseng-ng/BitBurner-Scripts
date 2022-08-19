@@ -11,13 +11,16 @@ export async function main(ns) {
   let portHackLvl = 0;
   let oldPortHackLvl = 0;
   let numExistNodes = 0;
-  let gangCreation = 0;
   let end_script = 0;
   let killHackPID = 0;
-
+  let serverCount = ns.getPurchasedServers().length;
+  
+  let numGangMember = ns.Gang.getMemberNames().length;
+  let gangCreation = ns.Gang.inGang();
   // gangFactionList = ["Slum Snakes", "Tetrads", "The Syndicate", "The Dark Army", "Speakers for the Dead", "NiteSec", "The Black Hand"];
   let gangFaction = "NiteSec";
-  let serverCount = ns.getPurchasedServers().length;
+  // gangTypeList = ["Hacking", "Combat", "Crime"];
+  let gangType = "Hacking"
 
   // Call scan function to dump all available servers in game
   // var[scannedServers, scannedServersFiltered] = await scanServer(ns);
@@ -99,10 +102,24 @@ export async function main(ns) {
     await ns.sleep(60000);
 
     //TODO: Add if loop for gang API implementation
-    if (gangCreation == 0) {
+    if (gangCreation == false) {
       ns.tprint('Creating gang');
-      
-      gangCreation = 1;
+      ns.Gang.createGang(gangFaction);
+      gangCreation = true;
+    } else {
+      // Recruit new members till unable
+      while (ns.Gang.canRecuitMember() == true) {
+        ns.tprint('Recruiting member');
+        let gangMemberName = "memName-" + numGangMember;
+        numGangMember += 1;
+        ns.Gang.recruitMember(gangMemberName);
+      }
+      let gangMemberList = ns.Gang.getMemberNames();
+      // Set members' tasks and upgrade if able
+      if (gangType == "Hacking") {
+        ns.tprint('Current gang type = Hacking');
+        
+      }
     }
   }
 }
