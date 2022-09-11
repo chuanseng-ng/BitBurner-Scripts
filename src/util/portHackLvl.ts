@@ -1,18 +1,28 @@
 /** @param {NS ns} **/
-export function portHackLvlCal(ns) {
+export function portHackLvlCal(ns): [number, string[]] {
   let portHackLvl = 0;
+  const availPortScript: any [] = [];
 
   if (ns.fileExists('SQLInject.exe')) {
-    portHackLvl = 5;
-  } else if (ns.fileExists('HTTPWorm.exe')) {
-    portHackLvl = 4;
-  } else if (ns.fileExists('relaySMTP.exe')) {
-    portHackLvl = 3;
-  } else if (ns.fileExists('FTPCrack.exe')) {
-    portHackLvl = 2;
-  } else if (ns.fileExists('BruteSSH.exe')) {
-    portHackLvl = 1;
+    portHackLvl += 1;
+    availPortScript.push('SQLInject.exe');
+  } 
+  if (ns.fileExists('HTTPWorm.exe')) {
+    portHackLvl += 1;
+    availPortScript.push('HTTPWorm.exe');
+  } 
+  if (ns.fileExists('relaySMTP.exe')) {
+    portHackLvl += 1;
+    availPortScript.push('relaySMTP.exe');
+  } 
+  if (ns.fileExists('FTPCrack.exe')) {
+    portHackLvl += 1;
+    availPortScript.push('FTPCrack.exe');
+  } 
+  if (ns.fileExists('BruteSSH.exe')) {
+    portHackLvl += 1;
+    availPortScript.push('BruteSSH.exe');
   }
 
-  return portHackLvl;
+  return [portHackLvl, availPortScript];
 }

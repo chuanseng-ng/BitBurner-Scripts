@@ -4,7 +4,6 @@ import {scanServer} from './scan';
 /** @param {NS ns} **/
 // export async function serverCal(ns, scannedServersFiltered) {
 export async function main(ns) {
-  let portHackLvl = 0;
   let highestLvlServerCount = 0;
   let optimalServerIndex = 0;
   const optimalServerMoney = 0;
@@ -17,7 +16,7 @@ export async function main(ns) {
   // var scannedServers: any [] = [];
   let scannedServersFiltered: any [] = [];
 
-  portHackLvl = portHackLvlCal(ns);
+  let [portHackLvl, availPortScript] = portHackLvlCal(ns);
   // [scannedServers, scannedServersFiltered] = await scanServer(ns);
   scannedServersFiltered = await scanServer(ns);
 
