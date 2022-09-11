@@ -14,7 +14,6 @@ export async function main(ns) {
   let end_script = 0;
   let killHackPID = 0;
   let serverCount = ns.getPurchasedServers().length; 
-  let gangCreation = ns.gang.inGang();
   // gangFactionList = ["Slum Snakes", "Tetrads", "The Syndicate", "The Dark Army", "Speakers for the Dead", "NiteSec", "The Black Hand"];
   let gangFaction = "NiteSec";
 
@@ -42,7 +41,7 @@ export async function main(ns) {
 
   //TODO: Add formulas API to determine most lucrative hacking method in bitnode
 
-  while ((portHackLvl !=5 || serverCount != 25 || numExistNodes != 30) && end_script!= 1) {
+  while (end_script!= 1) {
     // Attempt to buy maximum number of pservers
     // Then attempt to upgrade pservers to max RAM
     if (serverCount < 25 && ns.getPlayer().money > ns.getPurchasedServerCost(8)) {
@@ -83,7 +82,7 @@ export async function main(ns) {
     await ns.sleep(60000);
 
     // Attempt to buy/upgrade hacknet nodes
-    if (numExistNodes != 30) {
+    if (numExistNodes != 100) {
       ns.tprint('Buying hacknet node');
       ns.run('/build/hacknet/purchaseHacknet.js', 1);
       // await resourceMan.memAnalyze(ns, '/build/hacknet/purchaseHacknet.js')
@@ -98,10 +97,9 @@ export async function main(ns) {
     await ns.sleep(60000);
 
     //TODO: Add if loop for gang API implementation
-    if (gangCreation == false) {
+    if (!ns.gang.inGang()) {
       ns.tprint('Creating gang');
       ns.gang.createGang(gangFaction);
-      gangCreation = true;
     } else {
       ns.tprint("Gang exists, will go to gang management");
       // await ns.run('/build/gang/gangMan.ts, 1);
