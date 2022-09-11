@@ -58,7 +58,7 @@ export async function main(ns) {
     if (portHackLvl != 5) {
       ns.tprint('Checking current portHackLvl');
       // await serverCal(ns, scannedServersFiltered);
-      portHackLvl = portHackLvlCal(ns);
+      let [portHackLvl, availPortScript] = portHackLvlCal(ns);
 
       if (portHackLvl > oldPortHackLvl) {
         ns.tprint('portHackLvl upgraded');
