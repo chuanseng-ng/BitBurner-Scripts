@@ -2,6 +2,7 @@
 export function portHackLvlCal(ns) {
   let portHackLvl = 0;
 
+  //TODO: Add flexible portHackLvl value based on available port hack scripts
   if (ns.fileExists('SQLInject.exe')) {
     portHackLvl = 5;
   } else if (ns.fileExists('HTTPWorm.exe')) {

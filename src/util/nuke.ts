@@ -20,6 +20,7 @@ export async function nukeChecker(ns, scannedServersFiltered) {
   ns.tprint('Nuke script finished, number of servers skipped: ' + nukeSkipped);
 }
 
+//TODO: Add flexible portHackLvl value based on available port hack scripts
 async function nuke(ns, serverName, serverPort, portHackLvl) {
   if (portHackLvl == 1) {
     ns.brutessh(serverName);
