@@ -1,15 +1,16 @@
 # BitBurner-Scripts-Status
 
 ## Legend - 
-> [x] - Completed
-> [v] - In progress
+> [v] - Completed
+> [x] - In progress
 > [ ] - Not started
 
 ## Progress - 
-[v] - Fix all errors occurring from current code
-[x] - Fix vscode extension not pushing code to game - (Might be due to Win11)
-[x] - Implement resource manager (RAM)
-[x] - Draw out map of server connection
+[v] - Fix vscode extension not pushing code to game - (Might be due to Win11)
+[v] - Implement resource manager (RAM)
+[v] - Draw out map of server connection
+[x] - Fix all errors occurring from current code
+[ ] - Check for formulas.exe and utilize built-in to maximize hacking
 [ ] - Assess feasibility of using node.js env to communicate with game
 [ ] - Attempt file database (Using port writing)
 [ ] - Implement class object in scripts

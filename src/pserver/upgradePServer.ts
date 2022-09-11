@@ -27,7 +27,7 @@ export async function main(ns) {
     if (startRamSize <= 8 || startRamSize <= currentServerSize) {
       ns.tprint('Can\'t afford upgrade - current ' + currentServerSize + 'GB, can afford ' + startRamSize + 'GB');
       ns.tprint('Next server RAM upgrade is ' + currentServerSize * 2 + 'GB which costs ' +
-                        ns.getPurchasedServerCost(startRamSize * 2) / 1000 / 1000 + 'bil');
+                        ns.getPurchasedServerCost(currentServerSize * 2) / 1000 / 1000 + 'bil');
       ns.tprint('');
 
       poorChecker = 1;
@@ -53,8 +53,11 @@ export async function main(ns) {
         }
 
         await ns.scp('/build/exec/hack.js', existingServers[i]);
-        ns.exec('/build/exec/hack.js', existingServers[i], Math.floor(ns.getServerMaxRam(existingServers[i])/2.4), killHackArg[0])
-
+        if (killHackArg) {
+          ns.exec('/build/exec/hack.js', existingServers[i], Math.floor(ns.getServerMaxRam(existingServers[i])/2.4), killHackArg[0]);
+        } else {
+          ns.run('/build/util/serverCal.js', 1);
+        }
         // await serverCal(ns, scannedServersFiltered)
       }
     }
