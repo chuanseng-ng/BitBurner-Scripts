@@ -96,7 +96,6 @@ export async function main(ns) {
     // Sleep to slow down loop
     await ns.sleep(60000);
 
-    //TODO: Add if loop for gang API implementation
     if (!ns.gang.inGang()) {
       ns.tprint('Creating gang');
       ns.gang.createGang(gangFaction);
