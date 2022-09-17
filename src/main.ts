@@ -16,6 +16,7 @@ export async function main(ns) {
   let serverCount = ns.getPurchasedServers().length; 
   // gangFactionList = ["Slum Snakes", "Tetrads", "The Syndicate", "The Dark Army", "Speakers for the Dead", "NiteSec", "The Black Hand"];
   let gangFaction = "NiteSec";
+  let corpName = "BurnYourBits"
 
   // Call scan function to dump all available servers in game
   // var[scannedServers, scannedServersFiltered] = await scanServer(ns);
@@ -105,7 +106,18 @@ export async function main(ns) {
       resourceMan.memAnalyze(ns, '/build/gang/gangMan.js');
     }
 
-    //TODO: Add corporation API if loop
+    // Check condition is if corporation exists and if player has 150bil
+    if (!ns.corp.getCorporation() && ns.getPlayer().money >= 150000000) {
+      ns.tprint('Creating corporation');
+      ns.corp.createCorporation(corpName, true);
+    } else if (ns.corp.getCorporation()) {
+      ns.tprint("Corporation exists, will go to corporation management");
+      // await ns.run('/build/corp/corpMan.ts, 1);
+      resourceMan.memAnalyze(ns, '/build/corp/corpMan.js');
+    } else {
+      ns.tprint("Not enough money to create corporation");
+      ns.tprint("Need 150bil to create new corporation");
+    }
 
     // Sleep again to slow down loop
     await ns.sleep(60000);
