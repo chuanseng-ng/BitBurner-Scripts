@@ -105,6 +105,8 @@ export async function main(ns) {
       resourceMan.memAnalyze(ns, '/build/gang/gangMan.js');
     }
 
+    //TODO: Add corporation API if loop
+
     // Sleep again to slow down loop
     await ns.sleep(60000);
   }
