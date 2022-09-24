@@ -8,14 +8,37 @@ import {portHackLvlCal} from './util/portHackLvl';
 
 /** @param {NS ns} **/
 export async function main(ns) {
-  let portHackLvl = 0;
-  let oldPortHackLvl = 0;
-  let numExistNodes = 0;
-  let end_script = 0;
-  let killHackPID = 0;
-  let serverCount = ns.getPurchasedServers().length; 
+  let portHackLvl       = 0;
+  let oldPortHackLvl    = 0;
+  let numExistNodes     = 0;
+  let end_script        = 0;
+  let killHackPID       = 0;
+  let serverCount       = ns.getPurchasedServers().length; 
   // gangFactionList = ["Slum Snakes", "Tetrads", "The Syndicate", "The Dark Army", "Speakers for the Dead", "NiteSec", "The Black Hand"];
-  let gangFaction = "NiteSec";
+  let existGang         = false;
+  let gangFaction       = "NiteSec";
+  let existSingularity  = false;
+  let ownSourceFileList = []
+
+  // Check if Gang function exists
+  try {
+    let checkGang = ns.gang.inGang();
+    existGang     = true;
+  } 
+  catch(err) {
+    ns.tprint("Gang API does not exist!");
+    ns.tprint("Clear Bitnode 2 once to unlock this API")
+  }
+
+  // Check if Singularity function exits
+  try {
+    ownSourceFileList = ns.singularity.getOwnSourceFiles();
+    existSingularity  = true;
+  }
+  catch(err) {
+    ns.tprint("Singularity API does not exist or is of lower level than 3!");
+    ns.tprint("Recommend clearing Bitnode 4 to level 3 first to unlock this API!");
+  }
 
   // Call scan function to dump all available servers in game
   // var[scannedServers, scannedServersFiltered] = await scanServer(ns);
@@ -96,13 +119,29 @@ export async function main(ns) {
     // Sleep to slow down loop
     await ns.sleep(60000);
 
-    if (!ns.gang.inGang()) {
-      ns.tprint('Creating gang');
-      ns.gang.createGang(gangFaction);
-    } else {
-      ns.tprint("Gang exists, will go to gang management");
-      // await ns.run('/build/gang/gangMan.ts, 1);
-      resourceMan.memAnalyze(ns, '/build/gang/gangMan.js');
+    if (existGang) {
+      if (!ns.gang.inGang()) {
+        ns.tprint('Creating gang');
+        ns.gang.createGang(gangFaction);
+      } else {
+        ns.tprint("Gang exists, will go to gang management");
+        // await ns.run('/build/gang/gangMan.ts, 1);
+        resourceMan.memAnalyze(ns, '/build/gang/gangMan.js');
+      }
+    }
+
+    // Sleep again to slow down loop
+    await ns.sleep(60000);
+
+    if (existSingularity) {
+      for (let i = 0; i < ownSourceFileList.length; i++) {
+        let ownSourceFile = Object.entries(ownSourceFileList[i]);
+        if (ownSourceFile[0][0] == '4' && ownSourceFile[0][1] == '3') {
+          ns.tprint("Singularity API exists and Source-File 4 is level 3");
+          // await ns.run('/build/singularity/singularityMan.ts', 1);
+          resourceMan.memAnalyze(ns, '/build/singularity/singularityMan.js');
+        }
+      }
     }
 
     // Sleep again to slow down loop
