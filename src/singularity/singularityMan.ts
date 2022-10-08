@@ -1,3 +1,5 @@
+import * as resourceMan from "../util/resourceMan";
+
 /** @param {NS ns} **/
 export async function main(ns) {
     let programHackLvl      = {brutessh: 50, ftpcrack: 100, relaysmtp: 250, httpworm: 500, sqlinject: 750, 
@@ -73,8 +75,9 @@ export async function main(ns) {
             } else if (ns.getPlayer().money > ns.singularity.getUpgradeHomeRamCost) {
                 ns.tprint("Upgrading home server RAM");
                 ns.singularity.upgradeHomeRam();
-                //TODO: Kill hack script in home and rerun serverCalc
-
+                //TODO: Kill hack script in home and rerun serverCal
+                ns.tprint("Recalculating home server hack script thread count")
+                resourceMan.memAnalyze(ns, "/build/util/serverCal.js");
             } else {
                 ns.tprint("Not enough money for any home server upgrades!!!");
                 ns.tprint("Need " + ns.singularity.getUpgradeHomeCoresCost + " for home core upgrade");
