@@ -4,7 +4,8 @@ import * as resourceMan from "../util/resourceMan";
 export async function main(ns) {
     let programHackLvl      = {brutessh: 50, ftpcrack: 100, relaysmtp: 250, httpworm: 500, sqlinject: 750, 
                                 deepscanv1: 75, deepscanv2: 400, serverprofile: 75, autolink: 25};
-    let availCrimeList      = [];
+    let availCrimeList      = ["shoplift", "rob store", "mug someone", "larceny", "homicide", "grand theft auto", 
+                                "kidnap", "assassination", "heist"];
     let bitnodePriorityDict = {1.0: 3, 5.0: 1, 2.0: 3, 3.0: 3, 4.0: 3, 5.1: 3, 6.0: 1, 7.0: 1, 6.1: 3, 
                                 7.1: 3, 9.0: 1, 10.0: 1, 9.1: 3, 10.1: 3, 8.0: 3, 11.0: 3, 13.0: 3, 12.0: 10};
     let installAugmentCount = 0;
@@ -75,7 +76,7 @@ export async function main(ns) {
             } else if (ns.getPlayer().money > ns.singularity.getUpgradeHomeRamCost) {
                 ns.tprint("Upgrading home server RAM");
                 ns.singularity.upgradeHomeRam();
-                //TODO: Kill hack script in home and rerun serverCal
+                // Kill hack script in home and rerun serverCal
                 ns.tprint("Recalculating home server hack script thread count")
                 resourceMan.memAnalyze(ns, "/build/util/serverCal.js");
             } else {
@@ -91,7 +92,7 @@ export async function main(ns) {
                 ns.tprint("Player is not busy/focused, will commit crime instead!");
                 // Check crime chance before committing
                 for (let crime in availCrimeList) {
-                    if (ns.singularity.getCrimeChance(crime) > crimeChance) {
+                    if (ns.singularity.getCrimeChance(crime) > crimeChance && ns.singularity.getCrimeChance(crime) > 50) {
                         optimalCrime = crime;
                         crimeChance  = ns.singularity.getCrimeChance(crime);
                     }
