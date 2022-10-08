@@ -57,7 +57,7 @@ export async function main(ns) {
 }
 
 async function serverExec(ns, scannedServersFiltered, portHackLvl, killHackScript, killHackArg) {
-  const freeHomeRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
+  const freeHomeRam = ns.getServerMaxRam('home') - 8;
 
   // Kills all running scripts in all available servers
   for (let i = 0; i < scannedServersFiltered.length; i++) {
