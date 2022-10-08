@@ -66,7 +66,19 @@ export async function main(ns) {
             }
 
             // Upgrade home server core number/RAM if able to
-            //// If update home server RAM, kill hack script in home and rerun serverCalc
+            if (ns.getPlayer().money > ns.singularity.getUpgradeHomeCoresCost) {
+                ns.tprint("Upgrading home server core number");
+                ns.singularity.upgradeHomeCores();
+            } else if (ns.getPlayer().money > ns.singularity.getUpgradeHomeRamCost) {
+                ns.tprint("Upgrading home server RAM");
+                ns.singularity.upgradeHomeRam();
+                //TODO: Kill hack script in home and rerun serverCalc
+
+            } else {
+                ns.tprint("Not enough money for any home server upgrades!!!");
+                ns.tprint("Need " + ns.singularity.getUpgradeHomeCoresCost + " for home core upgrade");
+                ns.tprint("Need " + ns.singularity.getUpgradeHomeRamCost + " for home RAM upgrade");
+            }
 
             // Auto commit crime if not busy by this point
         }
