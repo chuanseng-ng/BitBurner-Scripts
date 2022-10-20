@@ -49,18 +49,23 @@ export async function main(ns) {
       // [serverCount, scannedServersFiltered] = await purchaseServer(ns, serverCount, scannedServersFiltered);
       resourceMan.memAnalyze(ns, '/build/pserver/purchasePServer.js');
       serverCount = ns.getPurchasedServers().length;
-    } else if (serverCount == 25) {
+
+      // Sleep to let previous scripts deallocate memory
+      await ns.sleep(60000);
+    } else if (serverCount == 25 && ns.getServerMaxRam('pserv-0') != 1048576) {
       ns.tprint('Upgrading personal server');
       // await ns.run('/build/pserver/upgradePServer.js', 1);
       resourceMan.memAnalyze(ns, '/build/pserver/upgradePServer.js');
       // await serverCal(ns, scannedServersFiltered)
       // await ns.run('/build/util/serverCal.js', 1);
+      // Sleep to let previous scripts deallocate memory
+      await ns.sleep(60000);
+    } else if (ns.getServerMaxRam('pserv-0') == 1048576) {
+      ns.tprint("Max RAM size for personal servers reached");
+      ns.tprint("Will skip upgrading personal servers");
     } else {
       ns.tprint("Not enough money for personal servers at the moment");
     }
-
-    // Sleep to let previous scripts deallocate memory
-    await ns.sleep(60000);
 
     // Attempt to upgrade server to hack
     if (portHackLvl != 5) {
