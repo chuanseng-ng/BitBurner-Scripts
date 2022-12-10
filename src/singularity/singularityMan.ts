@@ -102,6 +102,26 @@ export async function main(ns) {
                 busyCheck = true;
                 focusCheck = true;
             }
+
+            // Check if able to hack W0r1dD43m0n server
+            if (ns.getServer("W0r1dD43m0n") && (ns.getPlayer().skills.hacking >= ns.getServerRequiredHackingLevel("W0r1dD43m0n"))) {
+                // Array output [level, number]
+                let ownedSourceFiles = ns.singularity.getOwnedSourceFiles();
+                let nextBitNode      = "1";
+                // Check current Bitnode progress against preset dict to determine next Bitnode to enter
+                for (var checkBitNode in bitnodePriorityDict) {
+                    let splitBitNodeKey = checkBitNode.split(".")[0];
+                    let bitnodeLevel    = bitnodePriorityDict[checkBitNode];
+
+                    if (splitBitNodeKey in ownedSourceFiles[1]) {
+                        if (ownedSourceFiles[1][splitBitNodeKey] >= bitnodeLevel) {
+                            nextBitNode = checkBitNode;
+                        }
+                    }
+                }
+                // Format: (Next BN, Script to run)
+                ns.singularity.destroyW0r1dD43m0n(nextBitNode, "build/main.js")
+            }
         }
     }
 }
