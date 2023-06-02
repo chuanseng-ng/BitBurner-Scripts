@@ -66,7 +66,9 @@ async function serverExec(ns, scannedServersFiltered, portHackLvl, killHackScrip
     }
   }
 
-  ns.kill(killHackScript, 'home', killHackArg);
+  if (typeof killHackScript !== "undefined" && killHackScript !== "") {
+    ns.kill(killHackScript, 'home', killHackArg);
+  }
 
   for (let i = 0; i < scannedServersFiltered.length; i++) {
     await ns.scp('/build/exec/hack.js', scannedServersFiltered[i].hostname);
