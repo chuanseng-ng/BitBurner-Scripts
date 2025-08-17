@@ -14,7 +14,7 @@ export async function nukeChecker(ns: any, scannedServersFiltered: any[]) {
       nukeSkipped += 1;
     } else {
       const serverPort = scannedServersFiltered[i].numports;
-      await nuke(ns, serverName, serverPort, portHackLvl, availPortScript);
+      await nuke(ns, serverName, serverPort, portHackLvl, serverLvl, availPortScript);
     }
   }
 
@@ -23,7 +23,7 @@ export async function nukeChecker(ns: any, scannedServersFiltered: any[]) {
   }
 }
 
-async function nuke(ns: any, serverName: string, serverPort: number, portHackLvl: number, availPortScript: string[]) {
+async function nuke(ns: any, serverName: string, serverPort: number, portHackLvl: number, serverLvl: number, availPortScript: string[]) {
   if ('BruteSSH.exe' in availPortScript) {
     ns.brutessh(serverName);
   } 
@@ -40,7 +40,7 @@ async function nuke(ns: any, serverName: string, serverPort: number, portHackLvl
     ns.sqlinject(serverName);
   }
 
-  if (serverPort <= portHackLvl) {
+  if (serverPort <= portHackLvl && ns.getHackingLevel() >= serverLvl) {
     ns.nuke(serverName);
     // await ns.installBackdoor(serverName)
   }
