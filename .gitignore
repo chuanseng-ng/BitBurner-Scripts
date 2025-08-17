@@ -31,3 +31,8 @@ bitburner_scripts
 package-lock.json
 build
 .eslintrc.js
+
+# Legacy code and build artifacts
+legacy_code/
+dist/
+NetscriptDefinitions.d.ts

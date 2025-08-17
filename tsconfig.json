@@ -1,19 +1,21 @@
 {
-    "compilerOptions": {
-        "target": "ES2021",
-        "module": "ES2020",
-        "rootDir": "src",
-        "baseUrl": "src",
-        "paths": {
-            "./util/*": [ "/build/util/*" ],
-            "./*": [ "/build/*", "/build/util/*" ],
-            "*": [ "/build/*", "/build/util/*" ]
-        },
-        "outDir": "build",
-        "moduleResolution": "node",
-        "strictNullChecks": true,
-        "strictPropertyInitialization": true
-    },
-    "include": [ "src/**/*" ],
-    "exclude": [ "bitburner_scripts/**/*", "src/Bitburner.t.ts" ]
+  "include": ["NetscriptDefinitions.d.ts", "src/**/*"],
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+    "strict": true,
+    "rootDir": "src/",
+    "outDir": "dist/",
+    "baseUrl": "src/",
+    "allowJs": true,
+    "paths": {
+      "/*": ["*"],
+      "@ns": ["../NetscriptDefinitions.d.ts"]
+    }
+  }
 }
