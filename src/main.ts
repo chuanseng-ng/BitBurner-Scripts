@@ -49,7 +49,7 @@ export async function main(ns: any) {
                 await ns.sleep(1000); // Sleep to let previous scripts deallocate memory                
             }
         } else {
-            ns.tprint("Not enough money for personal servers at the moment...");
+            //ns.tprint("Not enough money for personal servers at the moment...");
         }
 
         // Sleep to let previous scripts deallocate memory
@@ -57,7 +57,7 @@ export async function main(ns: any) {
 
         // Attempt to upgrade server to hack
         if (portHackLvl != 5) {
-            ns.tprint('Checking current portHackLvl...');
+            //ns.tprint('Checking current portHackLvl...');
             const [portHackLvl_tmp, ] = portHackLvlCal(ns);
             portHackLvl = portHackLvl_tmp;
 
@@ -67,7 +67,7 @@ export async function main(ns: any) {
                 resourceMan.memAnalyze(ns, '/util/serverCal.js');
                 oldPortHackLvl = portHackLvl;
             } else {
-                ns.tprint('Current portHackLvl: ', oldPortHackLvl)
+                //ns.tprint('Current portHackLvl: ', oldPortHackLvl)
             }
         }
 
