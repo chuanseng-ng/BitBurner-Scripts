@@ -10,3 +10,6 @@
 - Add auto-program buying/creating function
 - Add staggered weaken/hack/grow stages to optimize process
 - Improve on GUI interface info
+
+# Reference
+- https://github.com/bitburner-official/bitburner-src/blob/stable/markdown/bitburner.md
