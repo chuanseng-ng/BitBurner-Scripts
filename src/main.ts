@@ -7,11 +7,17 @@ import { upgradePServer } from './pserver/upgradePServer';
 export async function main(ns: any) {
     // Parameters initialization
     let endScript = false;
+    let torPurchased = false;
+    let singulatityAPI = false;
+    let gangAPI = false;
     let portHackLvl = 0;
     let oldPortHackLvl = 0;
     let nextServerRamCost = 0;
     const playerMoney = ns.getPlayer().money;
     let serverCount = ns.getPurchasedServers().length;
+    const exeList = ["AutoLink.exe", "BruteSSH.exe", "DeepscanV1.exe", "DeepscanV2.exe", 
+                    "FTPCrack.exe", "Formulas.exe", "HTTPWorm.exe", "NUKE.exe", 
+                    "SQLInject.exe", "ServerProfiler.exe", "relaySMTP.exe"]
 
     // Kill all running scripts in all available servers
     const homeProcess = ns.ps('home');
@@ -54,6 +60,35 @@ export async function main(ns: any) {
 
         // Sleep to let previous scripts deallocate memory
         await ns.sleep(10000);
+
+        // Not enough RAM to support - Split to function
+        //if (singulatityAPI) {
+        //    // Purchase TOR router if not already purchased
+        //    if (!torPurchased && playerMoney > ns.getTorRouterCost()) {
+        //        ns.tprint('Purchasing TOR router...');
+        //        ns.purchaseTor();
+        //        torPurchased = true;
+        //    }
+
+        //    // Buy executable files from dark web if not already purchased
+        //    //if 
+        //} else {
+        //    exeList.forEach(function (exe) {
+        //        output = "buy " + exe
+        //        if (ns.fileExists(exe) == false) {
+        //            while (ns.fileExists(exe) == false) {
+        //                const terminalInput = document.getElementById("terminal-input")
+        //                const handler = Object.keys(terminalInput)[1]
+        //                terminalInput.value = output
+        //                terminalInput[handler].onChange({ target: terminalInput })
+        //                terminalInput[handler].onKeyDown({ keyCode: 13, preventDefault: () => null })
+        //            }
+        //            ns.toast("You bought: " + exe + ".")
+        //        } else {
+        //            ns.toast(exe + " was bought already.")
+        //        }
+        //    })
+        //}
 
         // Attempt to upgrade server to hack
         if (portHackLvl != 5) {
