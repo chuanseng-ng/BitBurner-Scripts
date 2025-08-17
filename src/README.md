@@ -5,3 +5,8 @@
 
 # Version History
 - 20250817 - Kick-off (Nuked database and restart from Bitburner template repo)
+
+# TODO
+- Add auto-program buying/creating function
+- Add staggered weaken/hack/grow stages to optimize process
+- Improve on GUI interface info
