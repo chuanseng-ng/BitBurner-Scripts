@@ -19,7 +19,7 @@ export async function nukeChecker(ns: any, scannedServersFiltered: any[]) {
   }
 
   if (nukeSkipped - existingServersNum > 0) {
-    ns.tprint('Nuke script finished, number of servers skipped: ' + (nukeSkipped - existingServersNum));
+    ns.toast('Nuke script finished, number of servers skipped: ' + (nukeSkipped - existingServersNum));
   }
 }
 

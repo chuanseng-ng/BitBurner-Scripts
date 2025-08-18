@@ -1,8 +1,10 @@
 /** @param {NS ns} **/
 export async function main(ns: any) {
     let output
-    const playerMoney = ns.getPlayer().money;
-    const exeList = ns.args[0];
+    const playerMoney = ns.args[0];
+    const exeList = ["AutoLink.exe", "BruteSSH.exe", "DeepscanV1.exe", "DeepscanV2.exe", 
+                    "FTPCrack.exe", "Formulas.exe", "HTTPWorm.exe", "NUKE.exe", 
+                    "SQLInject.exe", "ServerProfiler.exe", "relaySMTP.exe"];
 
     exeList.forEach(function (exe: string) {
         output = "buy " + exe

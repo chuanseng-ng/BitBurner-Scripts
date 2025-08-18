@@ -27,10 +27,9 @@ export function upgradePServer(ns: any): [boolean, number] {
     }
 
     if (startRamSize <= 8 || startRamSize <= currentServerSize) {
-      ns.tprint('Can\'t afford upgrade - current ' + currentServerSize + 'GB, can afford ' + startRamSize + 'GB');
-      ns.tprint('Next server RAM upgrade is ' + currentServerSize * 2 + 'GB which costs ' +
+      ns.toast('Can\'t afford upgrade - current ' + currentServerSize + 'GB, can afford ' + startRamSize + 'GB');
+      ns.toast('Next server RAM upgrade is ' + currentServerSize * 2 + 'GB which costs ' +
                         ns.getPurchasedServerCost(currentServerSize * 2) / 1000 / 1000 + 'bil');
-      ns.tprint('');
       serverUpgradeStop = true;
       nextServerRamCost = ns.getPurchasedServerCost(startRamSize * 2);
 
@@ -38,8 +37,7 @@ export function upgradePServer(ns: any): [boolean, number] {
     }
 
     if (!poorChecker) {
-      ns.tprint('Buying ' + existingServers.length + ' ' + startRamSize + 'GB servers');
-      ns.tprint('');
+      ns.toast('Buying ' + existingServers.length + ' ' + startRamSize + 'GB servers');
       for (let i = 0; i < existingServers.length; i++) {
         if (ns.serverExists(existingServers[i])) {
           ns.killall(existingServers[i]);
@@ -66,7 +64,7 @@ export function upgradePServer(ns: any): [boolean, number] {
     }
     return [serverUpgradeStop, nextServerRamCost];
   } else {
-    ns.tprint('No personal servers found, please purchase a server first');
+    ns.toast('No personal servers found, please purchase a server first');
     serverUpgradeStop = true;
 
     return [serverUpgradeStop, nextServerRamCost];

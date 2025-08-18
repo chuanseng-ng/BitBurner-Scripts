@@ -15,9 +15,8 @@ export async function purchasePServer (ns: any) {
     const hostName = 'pserv-' + serverCount;
     ns.purchaseServer(hostName, defaultRamSize);
     const hostNameServer = {hostname: hostName, ramsize: ns.getServerMaxRam(hostName)};
-    ns.tprint('Purchased personal server: ' + hostName);
-    ns.tprint('Verify server purchased: ' + hostNameServer.hostname);
-    ns.tprint('');
+    ns.toast('Purchased personal server: ' + hostName);
+    ns.toast('Verify server purchased: ' + hostNameServer.hostname);
 
     const homeProcess = ns.ps('home');
     for (let i = 0; i < homeProcess.length; i++) {
@@ -33,7 +32,7 @@ export async function purchasePServer (ns: any) {
       resourceMan.memAnalyze(ns, '/util/serverCal.js');      
     }
   } else {
-    ns.tprint("Not enough money at the moment");
+    ns.toast("Not enough money at the moment");
     serverBuyStop = true;
   }
 
