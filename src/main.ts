@@ -8,7 +8,7 @@ export async function main(ns: any) {
     // Parameters initialization
     let endScript = false;
     let torPurchased = false;
-    let singulatityAPI = false;
+    const singulatityAPI = false;
     let gangAPI = false;
     let portHackLvl = 0;
     let oldPortHackLvl = 0;
@@ -52,43 +52,22 @@ export async function main(ns: any) {
                 const [serverUpgradeStop_tmp, nextServerRamCost_tmp] = upgradePServer(ns);
                 serverUpgradeStop = serverUpgradeStop_tmp;
                 nextServerRamCost = nextServerRamCost_tmp;
-                await ns.sleep(1000); // Sleep to let previous scripts deallocate memory                
+                await ns.sleep(1000); // Sleep to let previous scripts deallocate memory - 1 second
             }
         } else {
             //ns.tprint("Not enough money for personal servers at the moment...");
         }
 
         // Sleep to let previous scripts deallocate memory
-        await ns.sleep(10000);
+        await ns.sleep(10000); // 10 seconds
 
         // Not enough RAM to support - Split to function
-        //if (singulatityAPI) {
-        //    // Purchase TOR router if not already purchased
-        //    if (!torPurchased && playerMoney > ns.getTorRouterCost()) {
-        //        ns.tprint('Purchasing TOR router...');
-        //        ns.purchaseTor();
-        //        torPurchased = true;
-        //    }
-
-        //    // Buy executable files from dark web if not already purchased
-        //    //if 
-        //} else {
-        //    exeList.forEach(function (exe) {
-        //        output = "buy " + exe
-        //        if (ns.fileExists(exe) == false) {
-        //            while (ns.fileExists(exe) == false) {
-        //                const terminalInput = document.getElementById("terminal-input")
-        //                const handler = Object.keys(terminalInput)[1]
-        //                terminalInput.value = output
-        //                terminalInput[handler].onChange({ target: terminalInput })
-        //                terminalInput[handler].onKeyDown({ keyCode: 13, preventDefault: () => null })
-        //            }
-        //            ns.toast("You bought: " + exe + ".")
-        //        } else {
-        //            ns.toast(exe + " was bought already.")
-        //        }
-        //    })
-        //}
+        if (singulatityAPI) {
+            const argsBuyTOR: [boolean, string[]] = [!!torPurchased, exeList];
+            torPurchased = await ns.run('/singularity/buyTOR.js', 1, ...argsBuyTOR);
+        } else {
+            await ns.run('/singularity/buyProgramWA.js', 1, ...exeList);
+        }
 
         // Attempt to upgrade server to hack
         if (portHackLvl != 5) {
@@ -98,7 +77,6 @@ export async function main(ns: any) {
 
             if (portHackLvl > oldPortHackLvl) {
                 ns.tprint('portHackLvl upgraded');
-                // await ns.run('/build/util/serverCal.js', 1);
                 resourceMan.memAnalyze(ns, '/util/serverCal.js');
                 oldPortHackLvl = portHackLvl;
             } else {
