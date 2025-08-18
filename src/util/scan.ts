@@ -3,9 +3,7 @@ import {nukeChecker} from './nuke';
 /** @param {NS ns} **/
 export async function scanServer(ns: any) {
   const hostName = ns.getHostname();
-  // ns.tprint(hostName)
   const scanArray = [hostName];
-  // var scannedServers: any[] = [];
   const scannedServersFiltered: string[] = [];
   let currentScanLength = 0;
 
@@ -30,8 +28,6 @@ export async function scanServer(ns: any) {
 
       if (server.ramsize >= 8 && !server.hostname.includes('home')) {
         scannedServersFiltered.push(server);
-        // await ns.write("filter_list.txt", server.hostname, "a")
-        // await ns.write("filter_list.txt", "\n", "a")
       }
 
       const newScan = ns.scan(currentHost);
@@ -45,6 +41,5 @@ export async function scanServer(ns: any) {
   }
   await nukeChecker(ns, scannedServersFiltered);
 
-  // return [scannedServers, scannedServersFiltered];
   return scannedServersFiltered;
 }

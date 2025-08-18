@@ -42,6 +42,5 @@ async function nuke(ns: any, serverName: string, serverPort: number, portHackLvl
 
   if (serverPort <= portHackLvl && ns.getHackingLevel() >= serverLvl) {
     ns.nuke(serverName);
-    // await ns.installBackdoor(serverName)
   }
 }

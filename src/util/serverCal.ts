@@ -13,17 +13,15 @@ export async function main(ns: any) {
   let killHackScript = "";
   const playerHackLvl = ns.getPlayer().skills.hacking;
   const highestLvlServer: any [] = [];
-  // var scannedServers: any [] = [];
   let scannedServersFiltered: any [] = [];
 
   let [portHackLvl, ] = portHackLvlCal(ns);
-  // [scannedServers, scannedServersFiltered] = await scanServer(ns);
   scannedServersFiltered = await scanServer(ns);
 
   while (pushDone != 1) {
     for (let i = 0; i < scannedServersFiltered.length; i++) {
       if (scannedServersFiltered[i].numports == portHackLvl && scannedServersFiltered[i].hacklevel <= playerHackLvl && 
-        !scannedServersFiltered[i].hostname.includes('pserv-')) {
+        ns.hasRootAccess(scannedServersFiltered[i].hostname) && !scannedServersFiltered[i].hostname.includes('pserv-')) {
         highestLvlServer.push(scannedServersFiltered[i]);
         highestLvlServerCount += 1;
         pushDone = 1;
@@ -36,9 +34,7 @@ export async function main(ns: any) {
   }
 
   for (let i = 0; i < highestLvlServerCount; i++) {
-    if (highestLvlServer[i].maxmoney > optimalServerMoney && highestLvlServer[i].hacklevel <= playerHackLvl && 
-      ns.hasRootAccess(highestLvlServer[i].hostname)) {
-      ns.tprint('Optimal server found: ' + highestLvlServer[i].hostname);
+    if (highestLvlServer[i].maxmoney > optimalServerMoney) {
       optimalServerIndex = i;
     }
   }
@@ -46,7 +42,6 @@ export async function main(ns: any) {
   const homeProcess = ns.ps('home');
   for (let i = 0; i < homeProcess.length; i++) {
     if (homeProcess[i].filename == '/exec/hack.js') {
-      // killHackPID = homeProcess[i].pid;
       killHackScript = homeProcess[i].filename;
       killHackArg = homeProcess[i].args;
     }

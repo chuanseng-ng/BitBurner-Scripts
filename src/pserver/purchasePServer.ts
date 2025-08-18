@@ -19,11 +19,6 @@ export async function purchasePServer (ns: any) {
     ns.tprint('Verify server purchased: ' + hostNameServer.hostname);
     ns.tprint('');
 
-    // scannedServersFiltered.push(hostNameServer);
-    // serverCount += 1;
-    // await serverCal(ns, scannedServersFiltered)
-    // await ns.run('/util/serverCal.js', 1);
-    // resourceMan.memAnalyze(ns, '/util/serverCal.js');
     const homeProcess = ns.ps('home');
     for (let i = 0; i < homeProcess.length; i++) {
       if (homeProcess[i].filename == '/exec/hack.js') {
