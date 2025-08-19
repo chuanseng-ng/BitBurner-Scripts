@@ -27,8 +27,7 @@ export function memAnalyze(ns: any, activeScript: string) {
                 }
             }
         }
-    }
-    else {
+    } else {
         ns.run(activeScript, 1)
     }
 }
