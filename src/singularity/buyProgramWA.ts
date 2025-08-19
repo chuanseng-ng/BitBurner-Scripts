@@ -1,6 +1,7 @@
 /** @param {NS ns} **/
-export async function main(ns: any) {
+export async function main(ns: any): Promise<number> {
     let output
+    let purchasedProgramNum = 0;
     const playerMoney = ns.args[0];
     const exeList = ["AutoLink.exe", "BruteSSH.exe", "DeepscanV1.exe", "DeepscanV2.exe", 
                     "FTPCrack.exe", "Formulas.exe", "HTTPWorm.exe", "NUKE.exe", 
@@ -19,6 +20,9 @@ export async function main(ns: any) {
             ns.toast("You bought: " + exe + ".")
         } else {
             ns.toast(exe + " was bought already.")
+            purchasedProgramNum += 1;
         }
     })
+
+    return purchasedProgramNum;
 }

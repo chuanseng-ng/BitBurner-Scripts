@@ -12,8 +12,8 @@ export async function main(ns: any) {
   let killHackArg = "";
   let killHackScript = "";
   const playerHackLvl = ns.getPlayer().skills.hacking;
-  const highestLvlServer: any [] = [];
-  let scannedServersFiltered: any [] = [];
+  const highestLvlServer: any[] = [];
+  let scannedServersFiltered: any[] = [];
 
   let [portHackLvl, ] = portHackLvlCal(ns);
   scannedServersFiltered = await scanServer(ns);
@@ -54,8 +54,9 @@ export async function main(ns: any) {
   }
 }
 
-async function serverExec(ns: any, scannedServersFiltered: any[], portHackLvl: number, killHackScript: string, killHackArg: any) {
+async function serverExec(ns: any, scannedServersFiltered: any[], portHackLvl: number, killHackScript: string, killHackArg: string) {
   const freeHomeRam = ns.getServerMaxRam('home') - 8;
+  const scriptMemSize = ns.getScriptRam('/exec/hack.js');
 
   // Kills all running scripts in all available servers
   for (let i = 0; i < scannedServersFiltered.length; i++) {
@@ -72,12 +73,12 @@ async function serverExec(ns: any, scannedServersFiltered: any[], portHackLvl: n
     if (ns.hasRootAccess(scannedServersFiltered[i].hostname)) {
       await ns.scp('/exec/hack.js', scannedServersFiltered[i].hostname);
       if (portHackLvl >= scannedServersFiltered[i].numports || scannedServersFiltered[i].hostname.includes('pserv-')) {
-        ns.exec('/exec/hack.js', scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/2.4), killHackArg);
+        ns.exec('/exec/hack.js', scannedServersFiltered[i].hostname, Math.floor(scannedServersFiltered[i].ramsize/scriptMemSize), killHackArg);
       }
     }
   }
 
-  const homeThread = Math.floor(freeHomeRam/2.4);
+  const homeThread = Math.floor(freeHomeRam/scriptMemSize);
   if (homeThread > 0) {
     ns.run('/exec/hack.js', homeThread, killHackArg);
   }

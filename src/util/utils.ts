@@ -1,5 +1,5 @@
 /** @param {NS} ns **/
-export function multiscan(ns: any, server: string) {
+export function multiscan(ns: any, server: string): string[] {
 	const serverList: string[] = [];
 	function scanning(server: string) {
 		const currentScan = ns.scan(server);

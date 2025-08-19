@@ -1,8 +1,9 @@
 /** @param {NS ns} **/
 export function memAnalyze(ns: any, activeScript: string) {
-    const homeFreeRam = ns.getServerMaxRam('home') - ns.getServerUsedRam('home');
+    const homeMaxRam = ns.getServerMaxRam('home');
+    const homeFreeRam = homeMaxRam - ns.getServerUsedRam('home');
     const scriptMemSize = ns.getScriptRam(activeScript);
-    if (scriptMemSize > homeFreeRam) {
+    if (scriptMemSize > homeFreeRam && scriptMemSize <= homeMaxRam) {
         const homeProcess = ns.ps('home');
         for (let i = 0; i < homeProcess.length; i++) {
             if (homeProcess[i].filename == '/exec/hack.js') {

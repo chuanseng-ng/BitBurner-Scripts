@@ -2,6 +2,7 @@
 import * as resourceMan from './util/resourceMan';
 import { portHackLvlCal } from './util/portHackLvl';
 import { upgradePServer } from './pserver/upgradePServer';
+import { buyTOR } from './singularity/buyTOR';
 
 /** @param { NS ns}  **/
 export async function main(ns: any) {
@@ -13,6 +14,7 @@ export async function main(ns: any) {
     let portHackLvl = 0;
     let oldPortHackLvl = 0;
     let nextServerRamCost = 0;
+    let purchasedProgramNum = 0;
     const playerMoney = ns.getPlayer().money;
     let serverCount = ns.getPurchasedServers().length;
 
@@ -58,11 +60,14 @@ export async function main(ns: any) {
         // Sleep to let previous scripts deallocate memory
         await ns.sleep(10000); // 10 seconds
 
-        if (singularityAPI) {
-            const argsBuyTOR: [boolean, number] = [!!torPurchased, playerMoney];
-            torPurchased = await ns.run('/singularity/buyTOR.js', 1, ...argsBuyTOR);
-        } else {
-            await ns.run('/singularity/buyProgramWA.js', 1, playerMoney);
+        if (purchasedProgramNum < 11) {
+            if (singularityAPI) {
+                const [torPurchased_tmp, purchasedProgramNum_tmp] = buyTOR(ns, torPurchased, playerMoney);
+                torPurchased = torPurchased_tmp;
+                purchasedProgramNum = purchasedProgramNum_tmp;
+            } else {
+                purchasedProgramNum = await ns.run('/singularity/buyProgramWA.js', 1, playerMoney);
+            }
         }
 
         // Attempt to upgrade server to hack

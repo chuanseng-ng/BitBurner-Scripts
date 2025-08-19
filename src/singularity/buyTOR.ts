@@ -1,7 +1,6 @@
 /** @param {NS ns} **/
-export async function main(ns: any) {
-    let torPurchased = ns.args[0];
-    const playerMoney = ns.args[1];
+export function buyTOR(ns: any, torPurchased: boolean, playerMoney: number): [boolean, number] {
+    let purchasedProgramNum = 0;
     const exeList = ["AutoLink.exe", "BruteSSH.exe", "DeepscanV1.exe", "DeepscanV2.exe", 
                     "FTPCrack.exe", "Formulas.exe", "HTTPWorm.exe", "NUKE.exe", 
                     "SQLInject.exe", "ServerProfiler.exe", "relaySMTP.exe"];
@@ -15,12 +14,15 @@ export async function main(ns: any) {
     // Buy executable files from the dark web if not already owned
     if (torPurchased) {
         for (const exe of exeList) {
-            if (!ns.fileExists(exe, 'home') && playerMoney > ns.getDarkwebProgramCost(exe)) {
+            if (ns.fileExists(exe, 'home')) {
+                ns.toast(`${exe} already exists in home directory.`);
+                purchasedProgramNum += 1;
+            } else if ((!ns.fileExists(exe, 'home') && playerMoney > ns.getDarkwebProgramCost(exe))) {
                 ns.toast(`Purchasing ${exe}...`);
                 ns.purchaseProgram(exe);
-            }
+            } 
         }
     }
 
-    return torPurchased;
+    return [torPurchased, purchasedProgramNum];
 }

@@ -1,7 +1,7 @@
 import {nukeChecker} from './nuke';
 
 /** @param {NS ns} **/
-export async function scanServer(ns: any) {
+export async function scanServer(ns: any): Promise<any[]> {
   const hostName = ns.getHostname();
   const scanArray = [hostName];
   const scannedServersFiltered: string[] = [];
