@@ -14,7 +14,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5",
-    "vite": "^4.1.4",
+    "vite": "^7.1.3",
     "viteburner": "^0.5.3"
   },
   "license": "MIT"
